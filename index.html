@@ -1,0 +1,2950 @@
+<!-- Version 2.0 - Mobile Optimized -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner - Elegant Bride Plans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #F8F6F3; }
+        
+        /* AUTH SCREEN */
+        .auth-screen {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #F8F6F3 0%, #FAF8F6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-container {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .auth-logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #5A5A5A;
+            margin-bottom: 5px;
+        }
+        .auth-logo .subtitle {
+            font-family: 'Allura', cursive;
+            font-size: 1.5rem;
+            color: #A8B89C;
+            text-align: center;
+        }
+        .auth-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #F8F6F3;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #C9B8A8;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .auth-tab.active {
+            color: #D4A5A5;
+            border-bottom-color: #D4A5A5;
+        }
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5A5A5A;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #C9B8A8;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #D4A5A5;
+        }
+        .auth-btn {
+            width: 100%;
+            background: #D4A5A5;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        .auth-btn:hover {
+            background: #a86857;
+        }
+        .auth-btn:disabled {
+            background: #C9B8A8;
+            cursor: not-allowed;
+        }
+        .error-message {
+            background: #FFE6E6;
+            color: #D4A5A5;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .forgot-password a {
+            color: #D4A5A5;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        /* MAIN APP */
+        .app-screen {
+            display: none;
+        }
+        .app-screen.active {
+            display: block;
+        }
+        .header {
+            background: linear-gradient(to bottom, #F8F6F3 0%, #FAF8F6 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #5A5A5A;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #B8746B;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-family: 'Allura', cursive;
+            font-size: 2rem;
+            color: #7A8C6F;
+        }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #5A5A5A;
+            border: 2px solid #C9B8A8;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .logout-btn:hover {
+            background: #F8F6F3;
+        }
+        .tabs {
+            background: #5A5A5A;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab {
+            padding: 15px 25px;
+            background: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .tab:hover {
+            background: rgba(193,123,108,0.3);
+        }
+        .tab.active {
+            background: #D4A5A5;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px 80px;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        .save-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #C9B8A8;
+            color: #5A5A5A;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .save-indicator.show {
+            opacity: 1;
+        }
+        /* Make number input arrows always visible */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            opacity: 1;
+            height: 30px;
+        }
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #D4A5A5;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #5A5A5A;
+        }
+        .btn {
+            background: #D4A5A5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: #a86857;
+        }
+        .input {
+            width: 100%;
+            padding: 12px 8px;
+            border: 2px solid #C9B8A8;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+            text-align: center;
+            min-height: 48px;
+            box-sizing: border-box;
+        }
+        .input[type="date"] {
+            color-scheme: light;
+            max-width: 100%;
+        }
+        .label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5A5A5A;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #F8F6F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #D4A5A5;
+            font-weight: 600;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        .progress {
+            background: white;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #C9B8A8;
+            transition: width 0.3s;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .task {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #F8F6F3;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .task.done {
+            background: #F8F6F3;
+            border-color: #C9B8A8;
+            opacity: 0.7;
+        }
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #C9B8A8;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .checkbox.checked {
+            background: #C9B8A8;
+            color: white;
+            font-weight: 600;
+        }
+        .task:hover {
+            border-color: #C9B8A8;
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Responsive Styles */
+
+            /* Guest table - 2 rows on mobile */
+            @media (max-width: 768px) {
+                .guest-table {
+                    display: block !important;
+                }
+                .guest-table tbody {
+                    display: block !important;
+                }
+                .guest-table tr {
+                    display: grid !important;
+                    grid-template-columns: 1fr 1fr !important;
+                    gap: 10px !important;
+                    padding: 15px !important;
+                    border: 2px solid #C9B8A8 !important;
+                    border-radius: 8px !important;
+                    margin-bottom: 15px !important;
+                }
+                .guest-table td {
+                    display: block !important;
+                    border: none !important;
+                    padding: 5px !important;
+                }
+                .guest-table td:nth-child(1),
+                .guest-table td:nth-child(2) {
+                    grid-column: span 1 !important;
+                }
+                .guest-table td:nth-child(3),
+                .guest-table td:nth-child(4),
+                .guest-table td:nth-child(5),
+                .guest-table td:nth-child(6) {
+                    grid-column: span 1 !important;
+                }
+                .guest-table input,
+                .guest-table select {
+                    width: 100% !important;
+                }
+            }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px !important;
+                min-height: auto !important;
+            }
+            button[onclick="handleLogout()"] {
+                position: relative !important;
+                top: 0 !important;
+                right: 0 !important;
+                margin-top: 10px;
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            /* Stack tabs in 2 rows on mobile */
+            .tabs {
+                flex-wrap: wrap;
+            }
+            .tab {
+                font-size: 0.9rem;
+                padding: 12px 10px;
+                white-space: nowrap;
+            }
+            
+            /* Make grid 1 column on mobile */
+            .grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Budget category buttons - stack vertically */
+            .card > div:first-child {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+            
+            /* Budget category button container */
+            div[style*="display: flex; gap: 10px"] {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+            
+
+            /* Guest fields - 2 rows on mobile */
+            .guest-row {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            .guest-row input:nth-child(1),
+            .guest-row input:nth-child(2) {
+                grid-column: span 1 !important;
+            }
+            .guest-row input:nth-child(3) {
+                grid-column: span 2 !important;
+            }
+            /* Guest input fields full width on mobile */
+            .guest-row input,
+            .guest-row select {
+                width: 100% !important;
+                min-width: 100% !important;
+                font-size: 16px !important; /* Prevents zoom on iOS */
+            }
+            .guest-row input,
+            .guest-row select {
+                min-width: 100px !important;
+            }
+            
+            /* Manage Categories input and button - stack */
+            div[style*="display: flex; gap: 10px;"] {
+                flex-direction: column !important;
+            }
+            
+            /* Chart height adjustment for mobile */
+            
+            /* Chart labels smaller on mobile */
+            #budgetPieChart {
+                height: 400px !important;
+            }
+            #budgetPieChart {
+                height: 300px !important;
+            }
+            
+            /* Table stats - smaller on mobile */
+            .title {
+                font-size: 2.2rem !important;
+                color: #D4A5A5 !important;
+            }
+            .subtitle {
+                font-size: 1.5rem !important;
+            }
+            .stat-num {
+                font-size: 2rem !important;
+            }
+            
+            /* Logout button - smaller */
+            button[onclick="handleLogout()"] {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+    <!-- AUTH SCREEN -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <h1>Wedding Planner</h1>
+                <div class="subtitle">by Elegant Bride Plans</div>
+            </div>
+
+            <div id="authError" class="error-message" style="display: none;"></div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="showAuthTab('login')">Login</button>
+                <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="loginPassword" required>
+                </div>
+                <button type="submit" class="auth-btn" id="loginBtn">Login to Your Planner</button>
+                <div class="forgot-password">
+                    <a href="#" onclick="handleForgotPassword(event)">Forgot password?</a>
+                </div>
+            </form>
+
+            <!-- SIGNUP FORM -->
+            <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="signupPassword" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-input" id="signupPasswordConfirm" minlength="6" required>
+                </div>
+                <button type="submit" class="auth-btn" id="signupBtn">Create Your Planner</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCREEN -->
+    <div id="appScreen" class="app-screen">
+        <div class="header">
+            <div class="title">Complete Wedding Planner</div>
+            <div class="subtitle">by Elegant Bride Plans</div>
+            <button onclick="handleLogout()" style="position: absolute; top: 20px; right: 20px; background: white; border: 2px solid #D4A5A5; color: #D4A5A5; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">Logout</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('overview')">Overview</button>
+            <button class="tab" onclick="showTab('budget')">ðŸ’° Budget</button>
+            <button class="tab" onclick="showTab('guests')">ðŸ‘¥ Guests</button>
+            <button class="tab" onclick="showTab('vendors')"><span style="color: #A8B89C;">ðŸ’¼</span> Vendors</button>
+            <button class="tab" onclick="showTab('seating')"><span style="color: #A8B89C;">ðŸª‘</span> Seating</button>
+            <button class="tab" onclick="showTab('checklist')"><span style="color: #A8B89C;">âœ“</span> Checklist</button>
+        </div>
+
+        <div class="container">
+            <div id="loadingIndicator" class="loading">
+                <h3>Loading your wedding planner...</h3>
+            </div>
+
+            <!-- OVERVIEW TAB -->
+            <div id="overview" class="content" style="display: none;">
+                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <h2>Wedding Details</h2>
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                        <div style="background: #F8F6F3; padding: 12px; border-radius: 6px; text-align: center;">
+                            <input type="text" class="input" id="bride" style="width: 100%; height: 44px; margin-bottom: 8px; padding: 8px; font-size: 1rem; text-align: center; border: 2px solid #C9B8A8; border-radius: 4px; box-sizing: border-box;">
+                            <div style="color: #666; font-size: 0.8rem;">Bride/Partner 1</div>
+                        </div>
+                        <div style="background: #F8F6F3; padding: 12px; border-radius: 6px; text-align: center;">
+                            <input type="text" class="input" id="partner" style="width: 100%; height: 44px; margin-bottom: 8px; padding: 8px; font-size: 1rem; text-align: center; border: 2px solid #C9B8A8; border-radius: 4px; box-sizing: border-box;">
+                            <div style="color: #666; font-size: 0.8rem;">Groom/Partner 2</div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Wedding Date & Countdown Combined -->
+                    <div style="background: linear-gradient(135deg, #D4A5A5 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Wedding Date</div>
+                        <input type="date" class="input" id="weddingDate" style="width: 90%; max-width: 280px; padding: 12px; font-size: 1.1rem; text-align: center; border: none; border-radius: 6px; box-sizing: border-box; background: white; color: #5A5A5A; font-family: 'Montserrat', sans-serif; margin-bottom: 25px; display: block; margin-left: auto; margin-right: auto;">
+                        
+                        <div style="border-top: 2px solid rgba(255,255,255,0.3); padding-top: 20px; margin-top: 5px;">
+                            <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">Days Until Wedding</div>
+                            <div id="daysUntil" style="font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600; line-height: 1;">244</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Budget - Combined Elegant Section -->
+                    <div style="background: linear-gradient(135deg, #A8B89C 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Total Budget</div>
+                        <div style="background: white; padding: 12px; border-radius: 6px; max-width: 280px; margin: 0 auto 25px;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                                <span style="color: #5A5A5A; font-size: 1.4rem; font-family: 'Cormorant Garamond', serif; font-weight: 600;">$</span>
+                                <input type="text" class="input" id="totalBudget" placeholder="" style="border: none; padding: 8px 4px; font-size: 1.4rem; font-family: 'Cormorant Garamond', serif; text-align: center; background: transparent; color: #5A5A5A; font-weight: 600; width: 140px; box-sizing: border-box;">
+                            </div>
+                        </div>
+                        
+                        <div style="border-top: 2px solid rgba(255,255,255,0.3); padding-top: 20px; margin-top: 5px;">
+                            <div style="color: white; font-size: 0.85rem; margin-bottom: 15px; opacity: 0.9;">Budget Status</div>
+                            <div style="display: flex; justify-content: space-around; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">
+                                <div>
+                                    <div id="budgetSpent" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
+                                    <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Spent</div>
+                                </div>
+                                <div>
+                                    <div id="budgetRemaining" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
+                                    <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Remaining</div>
+                                </div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div id="budgetProgress" style="background: white; height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <div id="budgetTotal" style="color: white; font-size: 0.8rem; margin-top: 8px; opacity: 0.9;">of $0 total</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Guest Summary -->
+                    <div style="background: linear-gradient(135deg, #C9B8A8 0%, #D4A5A5 100%); padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Guest Summary</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px;">
+                            <div>
+                                <div id="overviewTotalGuests" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Total Invited</div>
+                            </div>
+                            <div>
+                                <div id="overviewCeremonyReception" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony & Reception</div>
+                            </div>
+                            <div>
+                                <div id="overviewCeremonyOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony Only</div>
+                            </div>
+                            <div>
+                                <div id="overviewReceptionOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Reception Only</div>
+                            </div>
+                            <div>
+                                <div id="overviewPending" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Pending</div>
+                            </div>
+                            <div>
+                                <div id="overviewDeclined" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
+                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Not Attending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUDGET TAB -->
+            <div id="budget" class="content">
+                <h2>Budget Breakdown</h2>
+                <p style="color: #666; margin-bottom: 25px;">Track your wedding expenses by category</p>
+                
+                <!-- Budget Summary at Top - Elegant Design -->
+                <div style="background: linear-gradient(135deg, #A8B89C 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Budget Summary</div>
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px; flex-wrap: wrap; gap: 20px;">
+                        <div>
+                            <div id="totalSpentDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
+                            <div style="color: white; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Total Spent</div>
+                        </div>
+                        <div>
+                            <div id="totalRemainingDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
+                            <div style="color: white; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Remaining</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-bottom: 25px;">
+                    <h3 style="margin-bottom: 15px;">Manage Categories</h3>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Add or remove budget categories to customize your planning</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="text" id="newCategoryName" class="input" style="flex: 1; min-width: 200px; padding: 10px;" placeholder="Category name">
+                        <button class="btn" onclick="addBudgetCategory()" style="white-space: nowrap;">+ Add Category</button>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 25px;">
+                    <h3 style="margin-bottom: 15px;">Budget Breakdown</h3>
+                    <div style="height: 350px; margin: 0 auto;">
+                        <canvas id="budgetPieChart"></canvas>
+                    </div>
+                </div>
+                <div id="budgetCategories"></div>
+            </div>
+
+
+            <!-- GUESTS TAB -->
+            <div id="guests" class="content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
+                    <div><h2 style="margin: 0;">Guest List</h2><p style="color: #666; margin: 5px 0 0;">Manage guests and track RSVPs</p></div>
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <button onclick="exportGuestList()" class="btn" style="background: #A8B89C !important; white-space: nowrap;">ðŸ“¥ Export Guest List</button>
+                        <select id="guestSort" onchange="handleSortChange()" style="padding: 10px; border: 2px solid #C9B8A8; border-radius: 6px; font-size: 0.9rem; color: #5A5A5A; background: white;">
+                            <option value="default">Filter: All Guests</option>
+                            <option value="rsvp-yes">Filter: Ceremony & Reception</option>
+                            <option value="rsvp-ceremony">Filter: Ceremony Only</option>
+                            <option value="rsvp-reception">Filter: Reception Only</option>
+                            <option value="rsvp-pending">Filter: Pending</option>
+                            <option value="rsvp-no">Filter: Not Attending</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="guestStats" style="margin-bottom: 25px;"></div>
+                
+                <!-- Meal Management - Collapsible (Options + Count) -->
+                <div class="card" style="margin-bottom: 25px; border: 2px solid #C9B8A8;">
+                    <div onclick="toggleMealOptions()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: 15px; border-bottom: 2px solid #F8F6F3;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span id="mealOptionsArrow" style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s;">â–¼</span>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.1rem;">Meal Management</h3>
+                                <p style="color: #666; font-size: 0.85rem; margin: 5px 0 0;">Manage meal options and view counts</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mealOptionsContent" style="padding-top: 15px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.95rem; color: #5A5A5A;">Meal Options</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 15px;">Customize the meal choices for your guests</p>
+                        <div id="mealOptionsList" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;"></div>
+                        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                            <input type="text" id="newMealOption" class="input" style="flex: 1; padding: 10px;" placeholder="Enter new meal option (e.g., Salmon, Vegan)" onclick="event.stopPropagation()">
+                            <button class="btn" onclick="event.stopPropagation(); addMealOption()">+ Add Option</button>
+                        </div>
+                        
+                        <div id="mealCount"></div>
+                    </div>
+                </div>
+                
+                <!-- Add Guest Button -->
+                <div style="margin-bottom: 25px;">
+                    <button class="btn" onclick="addGuest()" style="width: 100%; padding: 12px; font-size: 1rem;">+ Add Guest</button>
+                </div>
+                
+                <div id="guestList"></div>
+            </div>
+            
+            <!-- VENDORS TAB -->
+            <div id="vendors" class="content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <div><h2 style="margin: 0;">Vendor Contacts</h2><p style="color: #666; margin: 5px 0 0;">Keep vendor info organized</p></div>
+                    <button class="btn" style="background: #A8B89C !important;" onclick="addVendor()">+ Add Vendor</button>
+                </div>
+                <div id="vendorList"></div>
+            </div>
+            
+            
+            <!-- SEATING TAB -->
+            <div id="seating" class="content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
+                    <div><h2 style="margin: 0;">Seating Chart</h2><p style="color: #666; margin: 5px 0 0;">Plan reception seating</p></div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="printSeatingChart()" class="btn" style="background: #C9B8A8 !important; white-space: nowrap;">ðŸ–¨ï¸ Print Seating Chart</button>
+                        <button class="btn" style="background: #A8B89C !important;" onclick="addTable()">+ Add Table</button>
+                    </div>
+                </div>
+                <div id="seatingStats" class="card" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;"></div>
+                <div id="tableList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;"></div>
+            </div>
+
+            <!-- CHECKLIST TAB -->
+            <div id="checklist" class="content">
+                <h2>Wedding Planning Checklist</h2>
+                <p style="color: #666; margin-bottom: 25px;">Stay organized with this timeline-based checklist</p>
+                <div class="card" style="padding: 25px; margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div>
+                            <div id="tasksCompleted" style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #D4A5A5; font-weight: 600;">0 / 0</div>
+                            <div style="font-size: 0.9rem; color: #666;">Tasks completed</div>
+                        </div>
+                        <div id="tasksPercent" style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #D4A5A5; font-weight: 600;">0%</div>
+                    </div>
+                    <div class="progress" style="height: 12px;"><div id="tasksProgress" class="progress-bar"></div></div>
+                </div>
+                <div id="taskList"></div>
+            </div>
+        </div>
+
+        <div class="save-indicator" id="saveIndicator">âœ“ Saved to cloud</div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script>
+        // Make these functions available immediately (before Firebase loads)
+        window.showAuthTab = function(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelectorAll('.auth-tab')[0].classList.add('active');
+                document.getElementById('loginForm').classList.add('active');
+            } else {
+                document.querySelectorAll('.auth-tab')[1].classList.add('active');
+                document.getElementById('signupForm').classList.add('active');
+            }
+            const errorDiv = document.getElementById('authError');
+            if (errorDiv) errorDiv.style.display = 'none';
+        };
+    </script>
+    
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot, updateDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // FIREBASE CONFIG - REPLACE WITH YOUR CONFIG
+        const firebaseConfig = {
+  apiKey: "AIzaSyBeY81w3ka2pjG3u7MTL9XB7b-3nYOKZGo",
+  authDomain: "wedding-planner-39e6b.firebaseapp.com",
+  projectId: "wedding-planner-39e6b",
+  storageBucket: "wedding-planner-39e6b.firebasestorage.app",
+  messagingSenderId: "238096937078",
+  appId: "1:238096937078:web:916f3741fd1e2fa6dbaf57"
+};
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let unsubscribe = null;
+        let userData = {};
+
+        const budgetCategories = {
+            venue: 'Venue',
+            catering: 'Catering & Bar',
+            photography: 'Photo & Video',
+            flowers: 'Flowers & Decor',
+            entertainment: 'Entertainment',
+            attire: 'Wedding Attire',
+            invitations: 'Invitations',
+            cake: 'Wedding Cake',
+            transportation: 'Transportation',
+            favors: 'Favors & Gifts',
+            hairMakeup: 'Hair & Makeup',
+            miscellaneous: 'Miscellaneous'
+        };
+
+        // Make functions global
+        window.handleLogin = handleLogin;
+        window.handleSignup = handleSignup;
+        window.handleLogout = handleLogout;
+        window.handleForgotPassword = handleForgotPassword;
+        window.showTab = showTab;
+
+        // Auth state observer
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                showApp();
+                loadUserData();
+            } else {
+                currentUser = null;
+                showAuth();
+            }
+        });
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+            
+            btn.disabled = true;
+            btn.textContent = 'Logging in...';
+            hideError();
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                showError(getErrorMessage(error.code));
+                btn.disabled = false;
+                btn.textContent = 'Login to Your Planner';
+            }
+        }
+
+        async function handleSignup(e) {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+            const btn = document.getElementById('signupBtn');
+            
+            if (password !== passwordConfirm) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+            hideError();
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                // Initialize empty user data with budget structure
+                const initialBudget = {};
+                Object.keys(budgetCategories).forEach(key => {
+                    initialBudget[key] = { estimated: '', actual: '', notes: '' };
+                });
+                
+                await setDoc(doc(db, 'users', userCredential.user.uid), {
+                    bride: '',
+                    partner: '',
+                    weddingDate: '',
+                    totalBudget: '',
+                    budget: initialBudget,
+                    createdAt: new Date().toISOString()
+                });
+            } catch (error) {
+                showError(getErrorMessage(error.code));
+                btn.disabled = false;
+                btn.textContent = 'Create Your Planner';
+            }
+        }
+
+        async function handleLogout() {
+            if (unsubscribe) unsubscribe();
+            await signOut(auth);
+        }
+
+        async function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = prompt('Enter your email address:');
+            if (email) {
+                try {
+                    await sendPasswordResetEmail(auth, email);
+                    alert('Password reset email sent! Check your inbox.');
+                } catch (error) {
+                    alert(getErrorMessage(error.code));
+                }
+            }
+        }
+
+        function showAuth() {
+            document.getElementById('authScreen').style.display = 'flex';
+            document.getElementById('appScreen').classList.remove('active');
+        }
+
+        function showApp() {
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('appScreen').classList.add('active');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('authError');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('authError').style.display = 'none';
+        }
+
+        function getErrorMessage(code) {
+            const messages = {
+                'auth/invalid-email': 'Invalid email address',
+                'auth/user-disabled': 'This account has been disabled',
+                'auth/user-not-found': 'No account found with this email',
+                'auth/wrong-password': 'Incorrect password',
+                'auth/email-already-in-use': 'An account with this email already exists',
+                'auth/weak-password': 'Password should be at least 6 characters',
+                'auth/network-request-failed': 'Network error. Please check your connection',
+                'auth/too-many-requests': 'Too many attempts. Please try again later'
+            };
+            return messages[code] || 'An error occurred. Please try again.';
+        }
+
+        async function loadUserData() {
+            if (!currentUser) return;
+
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('overview').style.display = 'none';
+            
+            let isInitialLoad = true;
+
+            try {
+                // Set up real-time listener
+                unsubscribe = onSnapshot(doc(db, 'users', currentUser.uid), (doc) => {
+                    if (doc.exists()) {
+                        userData = doc.data();
+                        
+                        // Populate overview fields
+                        document.getElementById('bride').value = userData.bride || '';
+                        document.getElementById('partner').value = userData.partner || '';
+                        document.getElementById('weddingDate').value = userData.weddingDate || '';
+                        const budgetVal = userData.totalBudget || '';
+                        document.getElementById('totalBudget').value = budgetVal ? formatNumber(budgetVal) : '';
+                        
+                        // Initialize vendors, tables, and tasks if not present
+                        if (!userData.vendors) userData.vendors = [];
+                        if (!userData.customBudgetCategories) userData.customBudgetCategories = {};
+                        if (!userData.deletedDefaultCategories) userData.deletedDefaultCategories = [];
+                        if (!userData.tables) userData.tables = [];
+                        if (!userData.tasks) {
+                            userData.tasks = [
+                                { period: '12+ Months Before', task: 'Announce engagement', completed: false },
+                                { period: '12+ Months Before', task: 'Set wedding date', completed: false },
+                                { period: '12+ Months Before', task: 'Determine budget', completed: false },
+                                { period: '12+ Months Before', task: 'Create guest list', completed: false },
+                                { period: '12+ Months Before', task: 'Choose wedding party', completed: false },
+                                { period: '12+ Months Before', task: 'Research venues', completed: false },
+                                { period: '12+ Months Before', task: 'Book ceremony venue', completed: false },
+                                { period: '12+ Months Before', task: 'Book reception venue', completed: false },
+                                { period: '9-11 Months Before', task: 'Book photographer', completed: false },
+                                { period: '9-11 Months Before', task: 'Book videographer', completed: false },
+                                { period: '9-11 Months Before', task: 'Book caterer', completed: false },
+                                { period: '9-11 Months Before', task: 'Book florist', completed: false },
+                                { period: '9-11 Months Before', task: 'Book DJ/band', completed: false },
+                                { period: '9-11 Months Before', task: 'Start dress shopping', completed: false },
+                                { period: '9-11 Months Before', task: 'Research honeymoon', completed: false },
+                                { period: '9-11 Months Before', task: 'Create wedding website', completed: false },
+                                { period: '6-8 Months Before', task: 'Order wedding dress', completed: false },
+                                { period: '6-8 Months Before', task: 'Shop bridesmaid dresses', completed: false },
+                                { period: '6-8 Months Before', task: 'Book hair/makeup artists', completed: false },
+                                { period: '6-8 Months Before', task: 'Book transportation', completed: false },
+                                { period: '6-8 Months Before', task: 'Order save-the-dates', completed: false },
+                                { period: '6-8 Months Before', task: 'Send save-the-dates', completed: false },
+                                { period: '6-8 Months Before', task: 'Book hotel blocks', completed: false },
+                                { period: '4-5 Months Before', task: 'Order invitations', completed: false },
+                                { period: '4-5 Months Before', task: 'Shop for wedding rings', completed: false },
+                                { period: '4-5 Months Before', task: 'Plan rehearsal dinner', completed: false },
+                                { period: '4-5 Months Before', task: 'Book rehearsal venue', completed: false },
+                                { period: '4-5 Months Before', task: 'Finalize menu', completed: false },
+                                { period: '4-5 Months Before', task: 'Order cake', completed: false },
+                                { period: '4-5 Months Before', task: 'Plan ceremony details', completed: false },
+                                { period: '2-3 Months Before', task: 'Mail invitations', completed: false },
+                                { period: '2-3 Months Before', task: 'Have dress fittings', completed: false },
+                                { period: '2-3 Months Before', task: 'Finalize ceremony script', completed: false },
+                                { period: '2-3 Months Before', task: 'Apply for marriage license', completed: false },
+                                { period: '2-3 Months Before', task: 'Plan reception timeline', completed: false },
+                                { period: '2-3 Months Before', task: 'Create seating chart', completed: false },
+                                { period: '2-3 Months Before', task: 'Order favors', completed: false },
+                                { period: '1 Month Before', task: 'Final dress fitting', completed: false },
+                                { period: '1 Month Before', task: 'Finalize guest count', completed: false },
+                                { period: '1 Month Before', task: 'Give final numbers to caterer', completed: false },
+                                { period: '1 Month Before', task: 'Confirm all vendors', completed: false },
+                                { period: '1 Month Before', task: 'Write vows', completed: false },
+                                { period: '1 Month Before', task: 'Break in shoes', completed: false },
+                                { period: '1 Month Before', task: 'Pick up rings', completed: false },
+                                { period: '1 Month Before', task: 'Prepare vendor payments', completed: false },
+                                { period: '2 Weeks Before', task: 'Confirm rehearsal details', completed: false },
+                                { period: '2 Weeks Before', task: 'Finalize seating chart', completed: false },
+                                { period: '2 Weeks Before', task: 'Pack for honeymoon', completed: false },
+                                { period: '2 Weeks Before', task: 'Delegate day-of tasks', completed: false },
+                                { period: '2 Weeks Before', task: 'Prepare emergency kit', completed: false },
+                                { period: '2 Weeks Before', task: 'Final hair/makeup trial', completed: false },
+                                { period: '1 Week Before', task: 'Rehearsal and dinner', completed: false },
+                                { period: '1 Week Before', task: 'Give rings to best man', completed: false },
+                                { period: '1 Week Before', task: 'Confirm final details with venue', completed: false },
+                                { period: '1 Week Before', task: 'Final vendor confirmations', completed: false },
+                                { period: '1 Week Before', task: 'Manicure/pedicure', completed: false },
+                                { period: '1 Week Before', task: 'Steam or press attire', completed: false },
+                                { period: '1 Week Before', task: 'Relax and enjoy!', completed: false }
+                            ];
+                        }
+                        // Initialize guests and mealOptions if not present
+                        if (!userData.guests) userData.guests = [];
+                        if (!userData.mealOptions) userData.mealOptions = ['Chicken', 'Beef', 'Vegetarian', 'Fish'];
+                        // Initialize budget if not present
+                        if (!userData.budget) {
+                            userData.budget = {};
+                            Object.keys(budgetCategories).forEach(key => {
+                                userData.budget[key] = { estimated: '', actual: '', notes: '' };
+                            });
+                        }
+                        
+                        updateStats();
+                    }
+                    
+                    // Only show overview and hide loading on initial load
+                    if (isInitialLoad) {
+                        document.getElementById('loadingIndicator').style.display = 'none';
+                        document.getElementById('overview').style.display = 'block';
+                        isInitialLoad = false;
+                    }
+                });
+
+
+                // Format budget on blur
+                const budgetInput = document.getElementById('totalBudget');
+                if (budgetInput && !budgetInput.dataset.formattingAdded) {
+                    budgetInput.addEventListener('blur', function() {
+                        const val = this.value.replace(/,/g, '');
+                        if (val && !isNaN(val)) {
+                            this.value = formatNumber(val);
+                        }
+                    });
+                    budgetInput.addEventListener('focus', function() {
+                        this.value = this.value.replace(/,/g, '');
+                    });
+                    budgetInput.dataset.formattingAdded = 'true';
+                }
+                // Auto-save on input changes for overview
+                ['bride', 'partner', 'weddingDate', 'totalBudget'].forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && !element.dataset.listenerAdded) {
+                        element.addEventListener('change', saveOverviewData);
+                        element.dataset.listenerAdded = 'true';
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loadingIndicator').innerHTML = '<p style="color: #D4A5A5;">Error loading data. Please refresh the page.</p>';
+            }
+        }
+
+        async function saveOverviewData() {
+            if (!currentUser) return;
+
+            const data = {
+                bride: document.getElementById('bride').value,
+                partner: document.getElementById('partner').value,
+                weddingDate: document.getElementById('weddingDate').value,
+                totalBudget: document.getElementById('totalBudget').value.replace(/,/g, ''),
+                updatedAt: new Date().toISOString()
+            };
+
+            try {
+                await updateDoc(doc(db, 'users', currentUser.uid), data);
+                showSaveIndicator();
+                updateStats();
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
+        }
+
+        async function saveBudgetItem(key, field, value) {
+            if (!currentUser) return;
+
+            try {
+                const budgetPath = `budget.${key}.${field}`;
+                await updateDoc(doc(db, 'users', currentUser.uid), {
+                    [budgetPath]: value,
+                    updatedAt: new Date().toISOString()
+                });
+                showSaveIndicator();
+                
+                // Update local data
+                if (!userData.budget) userData.budget = {};
+                if (!userData.budget[key]) userData.budget[key] = {};
+                userData.budget[key][field] = value;
+                
+                updateStats();
+                renderBudget();
+            } catch (error) {
+                console.error('Error saving budget:', error);
+            }
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        function formatNumber(num) {
+            return parseFloat(num || 0).toLocaleString();
+        }
+
+        function updateStats() {
+            // Days until wedding
+            const dateStr = document.getElementById('weddingDate').value;
+            if (dateStr) {
+                const days = Math.ceil((new Date(dateStr) - new Date()) / (1000 * 60 * 60 * 24));
+                const daysEl = document.getElementById('daysUntil');
+                if (daysEl) {
+                    daysEl.textContent = formatNumber(days);
+                }
+            }
+
+            // Budget
+            const total = parseFloat(document.getElementById('totalBudget').value.replace(/,/g, '')) || 0;
+            let totalActual = 0;
+            
+            if (userData.budget) {
+                Object.keys(budgetCategories).forEach(key => {
+                    if (userData.budget[key]) {
+                        totalActual += parseFloat(userData.budget[key].actual) || 0;
+                    }
+                });
+            }
+            
+            const remaining = total - totalActual;
+            const percent = total > 0 ? ((totalActual / total) * 100) : 0;
+
+            const budgetSpentEl = document.getElementById('budgetSpent');
+            const budgetTotalEl = document.getElementById('budgetTotal');
+            const budgetRemainingEl = document.getElementById('budgetRemaining');
+            const budgetProgressEl = document.getElementById('budgetProgress');
+            
+            if (budgetSpentEl) budgetSpentEl.textContent = '$' + formatNumber(totalActual);
+            if (budgetTotalEl) budgetTotalEl.textContent = 'of $' + formatNumber(total) + ' total';
+            if (budgetRemainingEl) budgetRemainingEl.textContent = '$' + formatNumber(remaining);
+            if (budgetProgressEl) budgetProgressEl.style.width = Math.min(percent, 100) + '%';
+
+            // Update budget tab totals
+            if (document.getElementById('totalSpentDisplay')) {
+                document.getElementById('totalSpentDisplay').textContent = '$' + formatNumber(totalActual);
+                document.getElementById('totalRemainingDisplay').textContent = '$' + formatNumber(remaining);
+            }
+            
+            // Guest stats
+            if (userData.guests) {
+                let totalGuests = 0;
+                let attendingBoth = 0;
+                let ceremonyOnly = 0;
+                let receptionOnly = 0;
+                let pending = 0;
+                let declined = 0;
+                
+                userData.guests.forEach(guest => {
+                    const partySize = parseInt(guest.partySize) || 1;
+                    totalGuests += partySize;
+                    
+                    if (guest.rsvp === 'Yes') {
+                        attendingBoth += partySize;
+                    } else if (guest.rsvp === 'Ceremony Only') {
+                        ceremonyOnly += partySize;
+                    } else if (guest.rsvp === 'Reception Only') {
+                        receptionOnly += partySize;
+                    } else if (guest.rsvp === 'Pending') {
+                        pending += partySize;
+                    } else if (guest.rsvp === 'No') {
+                        declined += partySize;
+                    }
+                });
+                
+                // Update Overview tab stats
+                const totalGuestsEl = document.getElementById('overviewTotalGuests');
+                const ceremonyReceptionEl = document.getElementById('overviewCeremonyReception');
+                const ceremonyOnlyEl = document.getElementById('overviewCeremonyOnly');
+                const receptionOnlyEl = document.getElementById('overviewReceptionOnly');
+                const pendingEl = document.getElementById('overviewPending');
+                const declinedEl = document.getElementById('overviewDeclined');
+                
+                if (totalGuestsEl) totalGuestsEl.textContent = formatNumber(totalGuests);
+                if (ceremonyReceptionEl) ceremonyReceptionEl.textContent = formatNumber(attendingBoth);
+                if (ceremonyOnlyEl) ceremonyOnlyEl.textContent = formatNumber(ceremonyOnly);
+                if (receptionOnlyEl) receptionOnlyEl.textContent = formatNumber(receptionOnly);
+                if (pendingEl) pendingEl.textContent = formatNumber(pending);
+                if (declinedEl) declinedEl.textContent = formatNumber(declined);
+            }
+        }
+
+
+        async function addBudgetCategory() {
+            const input = document.getElementById('newCategoryName');
+            const newCategory = input.value.trim();
+            if (!newCategory || !currentUser) return;
+            
+            // Save current scroll position
+            const scrollPos = window.scrollY;
+            
+            // Create a key (lowercase, no spaces)
+            const key = newCategory.toLowerCase().replace(/[^a-z0-9]/g, '');
+            
+            // Check if already exists
+            if (budgetCategories[key] || (userData.customBudgetCategories && userData.customBudgetCategories[key])) {
+                alert('This category already exists');
+                return;
+            }
+            
+            // Add to custom categories
+            if (!userData.customBudgetCategories) userData.customBudgetCategories = {};
+                        if (!userData.deletedDefaultCategories) userData.deletedDefaultCategories = [];
+            userData.customBudgetCategories[key] = newCategory;
+            
+            // Initialize budget data for this category
+            if (!userData.budget[key]) {
+                userData.budget[key] = { estimated: '', actual: '', notes: '' };
+            }
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                customBudgetCategories: userData.customBudgetCategories,
+                budget: userData.budget,
+                updatedAt: new Date().toISOString()
+            });
+            
+            input.value = '';
+            showSaveIndicator();
+            renderBudget();
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPos);
+        }
+
+        async function toggleBudgetCategory(key) {
+            if (!currentUser || !userData) return;
+            
+            if (!userData.collapsedBudgetCategories) {
+                userData.collapsedBudgetCategories = [];
+            }
+            
+            const index = userData.collapsedBudgetCategories.indexOf(key);
+            if (index > -1) {
+                userData.collapsedBudgetCategories.splice(index, 1);
+            } else {
+                userData.collapsedBudgetCategories.push(key);
+            }
+            
+            try {
+                await updateDoc(doc(db, 'users', currentUser.uid), {
+                    collapsedBudgetCategories: userData.collapsedBudgetCategories,
+                    updatedAt: new Date().toISOString()
+                });
+                
+                renderBudget();
+            } catch (error) {
+                console.error('Error toggling budget category:', error);
+            }
+        }
+
+        async function deleteBudgetCategory(key) {
+            if (!currentUser) return;
+            
+            const categoryName = userData.customBudgetCategories?.[key] || budgetCategories[key] || key;
+            
+            if (!confirm(`Delete "${categoryName}" category? This will remove all data for this category.`)) {
+                return;
+            }
+            
+            // Remove from custom categories if exists
+            if (userData.customBudgetCategories?.[key]) {
+                delete userData.customBudgetCategories[key];
+            }
+            
+            // Remove budget data
+            if (userData.budget[key]) {
+                delete userData.budget[key];
+            }
+            
+            // Track deleted default categories
+            if (budgetCategories[key]) {
+                if (!userData.deletedDefaultCategories) userData.deletedDefaultCategories = [];
+                if (!userData.deletedDefaultCategories.includes(key)) {
+                    userData.deletedDefaultCategories.push(key);
+                }
+            }
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                customBudgetCategories: userData.customBudgetCategories || {},
+                budget: userData.budget,
+                deletedDefaultCategories: userData.deletedDefaultCategories || [],
+                updatedAt: new Date().toISOString()
+            });
+            
+            showSaveIndicator();
+            renderBudget();
+        }
+
+        let budgetChart = null;
+
+        function renderBudgetPieChart() {
+            const canvas = document.getElementById('budgetPieChart');
+            if (!canvas || !userData.budget) return;
+            
+            // Collect data from all categories
+            const allCategories = {...budgetCategories};
+            if (userData.customBudgetCategories) {
+                Object.assign(allCategories, userData.customBudgetCategories);
+            }
+            
+            const labels = [];
+            const data = [];
+            const colors = [
+                '#D4A5A5', '#A8B89C', '#E8D5C4', '#C8D4E0',
+                '#F0E6E0', '#D8E8D8', '#E6D9CC', '#E0D8E8',
+                '#F5E6E6', '#D0E8D0', '#E8E0D8', '#E0E8F0',
+                '#F0E0E6', '#D8F0E0', '#E6E0F0', '#E0F0E8'
+            ];
+            
+            Object.entries(allCategories).forEach(([key, name]) => {
+                const actual = parseFloat(userData.budget[key]?.actual || 0);
+                if (actual > 0) {
+                    labels.push(name);
+                    data.push(actual);
+                }
+            });
+            
+            // If no data, show a placeholder
+            if (data.length === 0) {
+                labels.push('No expenses yet');
+                data.push(1);
+            }
+            
+            // Destroy existing chart
+            if (budgetChart) {
+                budgetChart.destroy();
+            }
+            
+            // Create new chart
+            const ctx = canvas.getContext('2d');
+            budgetChart = new Chart(ctx, {
+                plugins: [ChartDataLabels],
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            right: 80
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            labels: {
+                                font: {
+                                    family: "'Montserrat', sans-serif",
+                                    size: 11
+                                },
+                                padding: 10,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed.x || context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return label + ': $' + value.toLocaleString() + ' (' + percentage + '%)';
+                                }
+                            }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'right',
+                            color: '#5A5A5A',
+                            offset: 4,
+                            font: {
+                                weight: 'bold',
+                                size: window.innerWidth < 768 ? 14 : 16,
+                                family: "'Montserrat', sans-serif"
+                            },
+                            formatter: function(value, context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(0);
+                                return '$' + value.toLocaleString() + ' (' + percentage + '%)';
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                },
+                                font: {
+                                    size: window.innerWidth < 768 ? 12 : 14,
+                                    family: "'Montserrat', sans-serif"
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: window.innerWidth < 768 ? 12 : 14,
+                                    family: "'Montserrat', sans-serif"
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        function renderBudget() {
+            const container = document.getElementById('budgetCategories');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            let totalSpent = 0;
+
+            // Merge default and custom categories, excluding deleted
+            const allCategories = {};
+            
+            Object.entries(budgetCategories).forEach(([key, name]) => {
+                if (!userData.deletedDefaultCategories || !userData.deletedDefaultCategories.includes(key)) {
+                    allCategories[key] = name;
+                }
+            });
+            
+            if (userData.customBudgetCategories) {
+                Object.assign(allCategories, userData.customBudgetCategories);
+            }
+
+            // Sort categories alphabetically by name to maintain consistent order
+            const sortedCategories = Object.entries(allCategories).sort((a, b) => a[1].localeCompare(b[1]));
+
+            sortedCategories.forEach(([key, name]) => {
+                const item = userData.budget && userData.budget[key] ? userData.budget[key] : { estimated: '', actual: '', notes: '' };
+                const est = parseFloat(item.estimated) || 0;
+                const act = parseFloat(item.actual) || 0;
+                totalSpent += act;
+                const diff = est - act;
+                
+                // Check if this category should be collapsed
+                const isCollapsed = userData.collapsedBudgetCategories && userData.collapsedBudgetCategories.includes(key);
+
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.style.marginBottom = '15px';
+                div.innerHTML = `
+                    <div id="budget-header-${key}" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: ${isCollapsed ? '0' : '15px'}; border-bottom: ${isCollapsed ? 'none' : '2px solid #F8F6F3'};">
+                        <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                            <span style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s; display: inline-block; transform: rotate(${isCollapsed ? '0' : '90'}deg);">â–¶</span>
+                            <div>
+                                <div style="font-weight: 600; color: #5A5A5A; font-size: 1rem;">${name}</div>
+                                <div style="font-size: 0.85rem; color: #999; margin-top: 2px;">Budget: $${formatNumber(est)} | Spent: $${formatNumber(act)}</div>
+                            </div>
+                        </div>
+                        <div style="font-weight: 600; font-size: 0.9rem; color: ${diff >= 0 ? '#4caf50' : '#D4A5A5'}; margin-right: 10px;">${diff >= 0 ? '+' : ''}$${formatNumber(Math.abs(diff))}</div>
+                    </div>
+                    
+                    <div id="budget-details-${key}" style="display: ${isCollapsed ? 'none' : 'block'}; padding-top: 15px;">
+                        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                            <button onclick="event.stopPropagation(); deleteBudgetCategory('${key}')" style="font-size: 0.85rem; color: #D4A5A5; background: none; border: none; cursor: pointer; text-decoration: underline;">Delete Category</button>
+                            <button onclick="event.stopPropagation(); toggleNotes('${key}')" style="font-size: 0.85rem; color: #D4A5A5; background: none; border: none; cursor: pointer; text-decoration: underline;">
+                                <span id="notes-btn-${key}">${item.notes ? 'View Notes' : 'Add Notes'}</span>
+                            </button>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                            <div>
+                                <label style="font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px;">Estimated</label>
+                                <div style="position: relative;">
+                                    <span style="position: absolute; left: 10px; top: 10px; color: #666;">$</span>
+                                    <input type="text" value="${est ? formatNumber(est) : ''}" onchange="updateBudgetField('${key}', 'estimated', this.value)" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 10px 10px 22px; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif;" placeholder="">
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px;">Actual</label>
+                                <div style="position: relative;">
+                                    <span style="position: absolute; left: 10px; top: 10px; color: #666;">$</span>
+                                    <input type="text" value="${act ? formatNumber(act) : ''}" onchange="updateBudgetField('${key}', 'actual', this.value)" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 10px 10px 22px; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif;" placeholder="">
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px;">Difference</label>
+                                <div style="padding: 10px; font-weight: 600; color: ${diff >= 0 ? '#4caf50' : '#D4A5A5'};">${diff >= 0 ? '+' : ''}$${formatNumber(Math.abs(diff))}</div>
+                            </div>
+                        </div>
+                        <div id="notes-${key}" style="display: none; margin-top: 15px;">
+                            <label style="font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px;">Notes</label>
+                            <textarea onchange="updateBudgetField('${key}', 'notes', this.value)" onclick="event.stopPropagation()" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; min-height: 80px; font-family: 'Montserrat', sans-serif;">${item.notes || ''}</textarea>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+                
+                // Add click event listener for collapse/expand
+                const header = document.getElementById(`budget-header-${key}`);
+                if (header) {
+                    header.addEventListener('click', () => toggleBudgetCategory(key));
+                }
+            });
+
+            const totalBudget = parseFloat(document.getElementById('totalBudget').value.replace(/,/g, '')) || 0;
+            document.getElementById('totalSpentDisplay').textContent = '$' + formatNumber(totalSpent);
+            document.getElementById('totalRemainingDisplay').textContent = '$' + formatNumber(totalBudget - totalSpent);
+            
+            // Render pie chart
+            renderBudgetPieChart();
+        }
+
+        window.toggleNotes = function(key) {
+            const notesDiv = document.getElementById('notes-' + key);
+            const btn = document.getElementById('notes-btn-' + key);
+            if (notesDiv.style.display === 'none') {
+                notesDiv.style.display = 'block';
+                btn.textContent = 'Hide Notes';
+            } else {
+                notesDiv.style.display = 'none';
+                btn.textContent = userData.budget[key].notes ? 'View Notes' : 'Add Notes';
+            }
+        };
+
+        window.updateBudgetField = function(key, field, value) {
+            let numValue = value;
+            if (field !== 'notes') {
+                numValue = value.replace(/,/g, '');
+                if (numValue !== '' && isNaN(numValue)) return;
+            }
+            saveBudgetItem(key, field, numValue);
+        };
+
+
+        // GUESTS TAB FUNCTIONS
+        async function addGuest() {
+            if (!currentUser || !userData.guests) return;
+            
+            // Save current scroll position
+            const scrollPos = window.scrollY;
+            
+            // Add to BEGINNING of array so it appears at top
+            userData.guests.unshift({ 
+                firstName: '',
+                lastName: '',
+                name: '',  // Keep for backward compatibility
+                email: '', 
+                address: '', 
+                rsvp: 'Pending', 
+                meal: '',
+                partySize: 1,
+                notes: '',
+                expanded: true  // New guests start expanded
+            });
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderGuests();
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPos);
+        }
+
+        async function deleteGuest(index) {
+            if (!currentUser || !userData.guests) return;
+            
+            if (!confirm('Are you sure you want to delete this guest?')) return;
+            
+            const guest = userData.guests[index];
+            const guestName = guest.firstName || guest.lastName 
+                ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim() 
+                : guest.name || 'Unnamed';
+            
+            // Remove this guest from all tables
+            if (userData.tables) {
+                userData.tables.forEach(table => {
+                    table.guests = table.guests.map(g => g === guestName ? '' : g);
+                });
+            }
+            
+            userData.guests.splice(index, 1);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderGuests();
+        }
+
+        async function updateGuest(index, field, value) {
+            if (!currentUser || !userData.guests) return;
+            
+            const guest = userData.guests[index];
+            userData.guests[index][field] = value;
+            
+            // If party size changed, clear meal breakdown
+            if (field === 'partySize') {
+                userData.guests[index].mealBreakdown = {};
+                userData.guests[index].meal = '';
+            }
+            
+            // If RSVP changed to Ceremony Only or Not Attending, remove from all table seats
+            if (field === 'rsvp' && (value === 'Ceremony Only' || value === 'No')) {
+                const guestName = guest.firstName || guest.lastName 
+                    ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim() 
+                    : guest.name || 'Unnamed';
+                
+                // Remove this guest from all tables
+                if (userData.tables) {
+                    userData.tables.forEach(table => {
+                        table.guests = table.guests.map(g => g === guestName ? '' : g);
+                    });
+                }
+            }
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            
+            // Update the guest stats display immediately
+            const stats = document.getElementById('guestStats');
+            if (stats) {
+                let totalGuests = 0;
+                let attendingCeremony = 0;
+                let attendingReception = 0;
+                let ceremonyOnly = 0;
+                let receptionOnly = 0;
+                let declined = 0;
+                let pending = 0;
+                
+                userData.guests.forEach(guest => {
+                    const partySize = parseInt(guest.partySize) || 1;
+                    totalGuests += partySize;
+                    
+                    if (guest.rsvp === 'Yes') {
+                        attendingCeremony += partySize;
+                        attendingReception += partySize;
+                    } else if (guest.rsvp === 'Ceremony Only') {
+                        ceremonyOnly += partySize;
+                        attendingCeremony += partySize;
+                    } else if (guest.rsvp === 'Reception Only') {
+                        receptionOnly += partySize;
+                        attendingReception += partySize;
+                    } else if (guest.rsvp === 'No') {
+                        declined += partySize;
+                    } else {
+                        pending += partySize;
+                    }
+                });
+                
+                const ceremonyReception = attendingCeremony - ceremonyOnly;
+                
+                stats.innerHTML = `
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #C9B8A8; margin-bottom: 25px;">
+                        <h3 style="margin: 0 0 15px 0; font-size: 1.1rem;">Guest Summary</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px;">
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">${totalGuests}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Total Invited</div>
+                            </div>
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #A8B89C; font-weight: 600;">${ceremonyReception}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Ceremony & Reception</div>
+                            </div>
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #D4A5A5; font-weight: 600;">${ceremonyOnly}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Ceremony Only</div>
+                            </div>
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #D4A5A5; font-weight: 600;">${receptionOnly}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Reception Only</div>
+                            </div>
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #C9B8A8; font-weight: 600;">${pending}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Pending</div>
+                            </div>
+                            <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #999; font-weight: 600;">${declined}</div>
+                                <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Not Attending</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Also update meal count if RSVP or meal changed or party size changed
+            if (field === 'rsvp' || field === 'meal' || field === 'partySize') {
+                updateMealCountDisplay();
+            }
+            
+            // If party size, RSVP, or meal changed, re-render to show/hide meal breakdown and warnings
+            if (field === 'partySize' || field === 'rsvp' || field === 'meal') {
+                renderGuests();
+            }
+            
+            // If firstName or lastName changed, update seating dropdown
+            if (field === 'firstName' || field === 'lastName') {
+                renderSeating();
+            }
+            
+            updateStats();
+        }
+
+        async function updateMealBreakdown(guestIndex, meal, count) {
+            if (!currentUser || !userData.guests) return;
+            
+            if (!userData.guests[guestIndex].mealBreakdown) {
+                userData.guests[guestIndex].mealBreakdown = {};
+            }
+            
+            userData.guests[guestIndex].mealBreakdown[meal] = parseInt(count) || 0;
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            
+            updateMealCountDisplay();
+            renderGuests(); // Re-render to update the warning/count
+        }
+
+        function updateMealCountDisplay() {
+            const mealCountDiv = document.getElementById('mealCount');
+            if (mealCountDiv && userData.mealOptions) {
+                const mealCounts = {};
+                userData.mealOptions.forEach(meal => mealCounts[meal] = 0);
+                
+                userData.guests.forEach(guest => {
+                    // Count meals for guests attending reception (Yes or Reception Only)
+                    if (guest.rsvp === 'Yes' || guest.rsvp === 'Reception Only') {
+                        const partySize = parseInt(guest.partySize) || 1;
+                        
+                        if (partySize === 1 && guest.meal) {
+                            // Single guest - use simple meal selection
+                            if (mealCounts[guest.meal] !== undefined) {
+                                mealCounts[guest.meal] += 1;
+                            }
+                        } else if (partySize > 1 && guest.mealBreakdown) {
+                            // Party - use meal breakdown
+                            Object.entries(guest.mealBreakdown).forEach(([meal, count]) => {
+                                if (mealCounts[meal] !== undefined) {
+                                    mealCounts[meal] += parseInt(count) || 0;
+                                }
+                            });
+                        }
+                    }
+                });
+                
+                // Compact horizontal layout
+                let mealCountHTML = '<div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #C9B8A8; margin-bottom: 25px;"><h3 style="margin: 0 0 12px 0;">Meal Count for Caterer</h3><div style="display: flex; flex-wrap: wrap; gap: 20px;">';
+                Object.entries(mealCounts).forEach(([meal, count]) => {
+                    mealCountHTML += `
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #D4A5A5; font-weight: 600;">${count}</div>
+                            <div style="color: #666; font-size: 0.9rem;">${meal}</div>
+                        </div>
+                    `;
+                });
+                mealCountHTML += '</div></div>';
+                mealCountDiv.innerHTML = mealCountHTML;
+            }
+        }
+
+        function toggleMealOptions() {
+            const content = document.getElementById('mealOptionsContent');
+            const arrow = document.getElementById('mealOptionsArrow');
+            
+            if (!content || !arrow) return;
+            
+            const isHidden = content.style.display === 'none';
+            
+            if (isHidden) {
+                content.style.display = 'block';
+                arrow.textContent = 'â–¼';
+            } else {
+                content.style.display = 'none';
+                arrow.textContent = 'â–¶';
+            }
+        }
+
+        async function addMealOption() {
+            const input = document.getElementById('newMealOption');
+            const newMeal = input.value.trim();
+            if (!newMeal || !currentUser) return;
+            if (!userData.mealOptions) userData.mealOptions = ['Chicken', 'Beef', 'Vegetarian', 'Fish'];
+            if (userData.mealOptions.includes(newMeal)) {
+                alert('This meal option already exists');
+                return;
+            }
+            
+            userData.mealOptions.push(newMeal);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                mealOptions: userData.mealOptions,
+                updatedAt: new Date().toISOString()
+            });
+            input.value = '';
+            showSaveIndicator();
+            renderGuests();
+        }
+
+        async function deleteMealOption(index) {
+            if (!currentUser || !userData.mealOptions) return;
+            
+            if (!confirm('Are you sure you want to delete this meal option?')) return;
+            
+            const mealToDelete = userData.mealOptions[index];
+            userData.mealOptions.splice(index, 1);
+            
+            // Clear this meal from any guests (both single meal and mealBreakdown)
+            if (userData.guests) {
+                userData.guests.forEach(guest => {
+                    // Clear single meal selection
+                    if (guest.meal === mealToDelete) {
+                        guest.meal = '';
+                    }
+                    // Clear from meal breakdown (for parties)
+                    if (guest.mealBreakdown && guest.mealBreakdown[mealToDelete]) {
+                        delete guest.mealBreakdown[mealToDelete];
+                    }
+                });
+            }
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                mealOptions: userData.mealOptions,
+                guests: userData.guests || [],
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderGuests(); // This will show warnings for guests who need to select a meal
+        }
+
+        async function toggleGuest(index) {
+            if (!currentUser || !userData.guests) return;
+            
+            // Toggle the expanded state
+            userData.guests[index].expanded = !userData.guests[index].expanded;
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                updatedAt: new Date().toISOString()
+            });
+            
+            renderGuests();
+        }
+
+        function handleSortChange() {
+            // Force immediate re-render when sort changes
+            renderGuests();
+        }
+
+        function renderGuests() {
+            const stats = document.getElementById('guestStats');
+            const list = document.getElementById('guestList');
+            const mealList = document.getElementById('mealOptionsList');
+            
+            if (!stats || !list) return;
+            
+            // Calculate stats (including party sizes)
+            let totalGuests = 0;
+            let attendingCeremony = 0;
+            let attendingReception = 0;
+            let ceremonyOnly = 0;
+            let receptionOnly = 0;
+            let declined = 0;
+            let pending = 0;
+            
+            if (userData.guests) {
+                userData.guests.forEach(guest => {
+                    const partySize = parseInt(guest.partySize) || 1;
+                    totalGuests += partySize;
+                    
+                    if (guest.rsvp === 'Yes') {
+                        attendingCeremony += partySize;
+                        attendingReception += partySize;
+                    } else if (guest.rsvp === 'Ceremony Only') {
+                        ceremonyOnly += partySize;
+                        attendingCeremony += partySize;
+                    } else if (guest.rsvp === 'Reception Only') {
+                        receptionOnly += partySize;
+                        attendingReception += partySize;
+                    } else if (guest.rsvp === 'No') {
+                        declined += partySize;
+                    } else {
+                        pending += partySize;
+                    }
+                });
+            }
+            
+            const ceremonyReception = attendingCeremony - ceremonyOnly; // Those attending both
+            
+            stats.innerHTML = `
+                <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #C9B8A8; margin-bottom: 25px;">
+                    <h3 style="margin: 0 0 15px 0; font-size: 1.1rem;">Guest Summary</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px;">
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">${totalGuests}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Total Invited</div>
+                        </div>
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #A8B89C; font-weight: 600;">${ceremonyReception}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Ceremony & Reception</div>
+                        </div>
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #D4A5A5; font-weight: 600;">${ceremonyOnly}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Ceremony Only</div>
+                        </div>
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #D4A5A5; font-weight: 600;">${receptionOnly}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Reception Only</div>
+                        </div>
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #C9B8A8; font-weight: 600;">${pending}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Pending</div>
+                        </div>
+                        <div style="text-align: center; background: #F8F6F3; padding: 12px; border-radius: 6px;">
+                            <div style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: #999; font-weight: 600;">${declined}</div>
+                            <div style="color: #666; font-size: 0.8rem; margin-top: 5px;">Not Attending</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Render meal options
+            if (mealList && userData.mealOptions) {
+                mealList.innerHTML = '';
+                userData.mealOptions.forEach((meal, index) => {
+                    const mealDiv = document.createElement('div');
+                    mealDiv.style.cssText = 'display: flex; align-items: center; gap: 8px; background: #F8F6F3; padding: 8px 12px; border-radius: 4px; border: 2px solid #C9B8A8;';
+                    mealDiv.className = 'meal-option-item';
+                    
+                    const mealSpan = document.createElement('span');
+                    mealSpan.textContent = meal;
+                    mealSpan.style.flex = '1';
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.style.color = '#D4A5A5';
+                    deleteBtn.style.textDecoration = 'underline';
+                    deleteBtn.style.background = 'transparent';
+                    deleteBtn.style.border = 'none';
+                    deleteBtn.style.cursor = 'pointer';
+                    deleteBtn.style.fontSize = '0.85rem';
+                    deleteBtn.style.padding = '0';
+                    deleteBtn.onclick = () => deleteMealOption(index);
+                    
+                    mealDiv.appendChild(mealSpan);
+                    mealDiv.appendChild(deleteBtn);
+                    mealOptionsList.appendChild(mealDiv);
+                });
+            }
+            
+            // Render meal count using helper function
+            updateMealCountDisplay();
+            
+            // Get sort/filter selection
+            const sortSelect = document.getElementById('guestSort');
+            const sortValue = sortSelect ? sortSelect.value : 'default';
+            
+            // Create a working copy of guests for sorting/filtering
+            let guestsToDisplay = userData.guests ? [...userData.guests] : [];
+            
+            // Apply filters first based on selection
+            if (sortValue === 'rsvp-yes') {
+                guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'Yes');
+            } else if (sortValue === 'rsvp-ceremony') {
+                guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'Ceremony Only');
+            } else if (sortValue === 'rsvp-reception') {
+                guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'Reception Only');
+            } else if (sortValue === 'rsvp-pending') {
+                guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'Pending');
+            } else if (sortValue === 'rsvp-no') {
+                guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'No');
+            }
+            
+            // Separate guests with and without last names
+            const namedGuests = guestsToDisplay.filter(g => g.lastName && g.lastName.trim() !== '');
+            const unnamedGuests = guestsToDisplay.filter(g => !g.lastName || g.lastName.trim() === '');
+            
+            // Sort only the named guests alphabetically by last name, then first name
+            const sortedNamedGuests = namedGuests.sort((a, b) => {
+                const lastNameA = a.lastName.toLowerCase();
+                const lastNameB = b.lastName.toLowerCase();
+                
+                // If last names are different, sort by last name
+                if (lastNameA !== lastNameB) {
+                    return lastNameA.localeCompare(lastNameB);
+                }
+                
+                // If last names are the same, sort by first name
+                const firstNameA = (a.firstName || a.name || '').toLowerCase();
+                const firstNameB = (b.firstName || b.name || '').toLowerCase();
+                return firstNameA.localeCompare(firstNameB);
+            });
+            
+            // Combine: unnamed guests first (in original order), then sorted named guests
+            guestsToDisplay = [...unnamedGuests, ...sortedNamedGuests];
+            
+            // Render guests as COLLAPSIBLE CARDS
+            list.innerHTML = '';
+            if (guestsToDisplay.length > 0) {
+                guestsToDisplay.forEach((guest) => {
+                    // Find the original index in userData.guests for proper function calls
+                    const originalIndex = userData.guests.findIndex(g => g === guest);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.style.cssText = 'border: 2px solid #C9B8A8; margin-bottom: 20px;';
+                    
+                    const partySize = parseInt(guest.partySize) || 1;
+                    
+                    // Initialize mealBreakdown if it doesn't exist
+                    if (!guest.mealBreakdown) {
+                        guest.mealBreakdown = {};
+                    }
+                    
+                    let mealSection = '';
+                    
+                    // Show meal selection for anyone attending reception (Yes, Reception Only, or Pending)
+                    const showMealSelection = guest.rsvp === 'Yes' || guest.rsvp === 'Reception Only' || guest.rsvp === 'Pending';
+                    
+                    if (showMealSelection) {
+                        // If party size is 1, show simple dropdown
+                        if (partySize === 1) {
+                            const hasMeal = guest.meal && guest.meal !== '';
+                            const warningStyle = !hasMeal ? 'color: #D4A5A5; font-weight: 600;' : 'color: #A8B89C;';
+                            mealSection = `
+                                <div><label style="font-size: 0.85rem; color: #666;">Meal Selection</label>
+                                <select onchange="updateGuest(${originalIndex}, 'meal', this.value)" class="input" style="padding: 10px;">
+                                    <option value="">Select meal</option>
+                                    ${userData.mealOptions ? userData.mealOptions.map(m => `<option ${guest.meal === m ? 'selected' : ''}>${m}</option>`).join('') : ''}
+                                </select>
+                                ${!hasMeal ? `<div style="font-size: 0.85rem; ${warningStyle} margin-top: 8px;">âš  Please select a meal</div>` : ''}
+                                </div>
+                            `;
+                        } else {
+                            // For parties > 1, show meal breakdown
+                            const mealBreakdownInputs = userData.mealOptions ? userData.mealOptions.map(meal => {
+                                const count = guest.mealBreakdown[meal] || 0;
+                                return `
+                                    <div style="display: flex; align-items: center; gap: 10px; background: #F8F6F3; padding: 8px 12px; border-radius: 4px; border: 2px solid #C9B8A8;">
+                                        <span style="flex: 1; font-size: 0.9rem;">${meal}</span>
+                                        <input type="number" min="0" max="${partySize}" value="${count}" 
+                                            onchange="updateMealBreakdown(${originalIndex}, '${meal}', this.value)" 
+                                            style="width: 60px; padding: 5px; border: 2px solid #C9B8A8; border-radius: 4px; text-align: center;">
+                                    </div>
+                                `;
+                            }).join('') : '';
+                            
+                            const totalMealsSelected = Object.values(guest.mealBreakdown || {}).reduce((sum, val) => sum + parseInt(val || 0), 0);
+                            const warningStyle = totalMealsSelected !== partySize ? 'color: #D4A5A5; font-weight: 600;' : 'color: #A8B89C;';
+                            
+                            mealSection = `
+                                <div style="grid-column: 1 / -1;">
+                                    <label style="font-size: 0.85rem; color: #666; margin-bottom: 8px; display: block;">Meal Breakdown for Party (${totalMealsSelected} of ${partySize} selected)</label>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                                        ${mealBreakdownInputs}
+                                    </div>
+                                    ${totalMealsSelected !== partySize ? `<div style="font-size: 0.85rem; ${warningStyle} margin-top: 8px;">âš  Please select meals for all ${partySize} guests in this party</div>` : ''}
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    // Determine if guest is expanded (default to false for existing, true for new)
+                    const isExpanded = guest.expanded !== undefined ? guest.expanded : false;
+                    const displayName = guest.firstName || guest.lastName 
+                        ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim() || 'Unnamed Guest'
+                        : guest.name || 'Unnamed Guest';
+                    
+                    // Add dietary indicator if guest has dietary restrictions
+                    const hasDietary = guest.dietary && guest.dietary.trim() !== '';
+                    const dietaryIndicator = hasDietary ? ' <span style="color: #A8B89C; font-size: 1rem;" title="Has dietary restrictions">ðŸŒ±</span>' : '';
+                    
+                    card.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleGuest(${originalIndex})">
+                            <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                                <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                                <h3 style="margin: 0; color: #D4A5A5;">${displayName}${dietaryIndicator}</h3>
+                                <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${guest.rsvp || 'Pending'}</span>
+                            </div>
+                            <button onclick="event.stopPropagation(); deleteGuest(${originalIndex})" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                        </div>
+                        <div id="guest-details-${originalIndex}" style="display: ${isExpanded ? 'block' : 'none'}; border-top: 2px solid #F8F6F3; padding-top: 15px; margin-top: 5px; text-align: left;">
+                            <div class="grid-2" style="margin-bottom: 15px;">
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">First Name</label><input type="text" value="${guest.firstName || ''}" onchange="updateGuest(${originalIndex}, 'firstName', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Last Name</label><input type="text" value="${guest.lastName || ''}" onchange="updateGuest(${originalIndex}, 'lastName', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Email</label><input type="email" value="${guest.email || ''}" onchange="updateGuest(${originalIndex}, 'email', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Phone Number</label><input type="tel" value="${guest.phone || ''}" onchange="updateGuest(${originalIndex}, 'phone', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Address</label><input type="text" value="${guest.address || ''}" onchange="updateGuest(${originalIndex}, 'address', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Dietary Restrictions</label><input type="text" value="${guest.dietary || ''}" onchange="updateGuest(${originalIndex}, 'dietary', this.value)" class="input" placeholder="e.g., Vegetarian, Gluten-free" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Party Size</label><input type="number" min="1" value="${guest.partySize || 1}" onchange="updateGuest(${originalIndex}, 'partySize', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">RSVP Status</label><select onchange="updateGuest(${originalIndex}, 'rsvp', this.value)" class="input" style="padding: 10px; text-align: left;">
+                                    <option value="Pending" ${guest.rsvp === 'Pending' ? 'selected' : ''}>Pending</option>
+                                    <option value="Yes" ${guest.rsvp === 'Yes' ? 'selected' : ''}>Ceremony & Reception</option>
+                                    <option value="Ceremony Only" ${guest.rsvp === 'Ceremony Only' ? 'selected' : ''}>Ceremony Only</option>
+                                    <option value="Reception Only" ${guest.rsvp === 'Reception Only' ? 'selected' : ''}>Reception Only</option>
+                                    <option value="No" ${guest.rsvp === 'No' ? 'selected' : ''}>Not Attending</option>
+                                </select></div>
+                                ${mealSection}
+                            </div>
+                            <div style="margin-top: 15px;"><label style="font-size: 0.85rem; color: #666; text-align: left;">Notes</label><textarea onchange="updateGuest(${originalIndex}, 'notes', this.value)" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; min-height: 60px; font-family: 'Montserrat', sans-serif; text-align: left;">${guest.notes || ''}</textarea></div>
+                        </div>
+                    `;
+                    
+                    list.appendChild(card);
+                });
+            }
+        }
+        // VENDORS TAB FUNCTIONS
+        async function addVendor() {
+            if (!currentUser || !userData.vendors) return;
+            
+            // Save current scroll position
+            const scrollPos = window.scrollY;
+            
+            // Add to BEGINNING of array so it appears at top
+            userData.vendors.unshift({ 
+                category: '', 
+                company: '', 
+                contact: '', 
+                phone: '', 
+                email: '',
+                cost: 0,
+                paid: 0,
+                notes: ''
+            });
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                vendors: userData.vendors,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderVendors();
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPos);
+        }
+
+        async function deleteVendor(index) {
+            if (!currentUser || !userData.vendors) return;
+            
+            if (!confirm('Are you sure you want to delete this vendor?')) return;
+            
+            userData.vendors.splice(index, 1);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                vendors: userData.vendors,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderVendors();
+        }
+
+        async function updateVendor(index, field, value) {
+            if (!currentUser || !userData.vendors) return;
+            
+            userData.vendors[index][field] = value;
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                vendors: userData.vendors,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            // Don't re-render to avoid losing focus
+        }
+
+        async function toggleVendor(index) {
+            if (!currentUser || !userData.vendors) return;
+            
+            // Toggle the expanded state
+            userData.vendors[index].expanded = !userData.vendors[index].expanded;
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                vendors: userData.vendors,
+                updatedAt: new Date().toISOString()
+            });
+            
+            renderVendors();
+        }
+
+        function renderVendors() {
+            const list = document.getElementById('vendorList');
+            if (!list || !userData.vendors) return;
+            
+            const categories = ['Venue', 'Caterer', 'Photographer', 'Videographer', 'Florist', 'DJ/Band', 'Bridal Shop', 'Hair Stylist', 'Makeup Artist', 'Baker', 'Transportation', 'Officiant', 'Wedding Planner', 'Other'];
+            
+            // Separate vendors with and without company names
+            const namedVendors = userData.vendors.filter(v => v.company && v.company.trim() !== '');
+            const unnamedVendors = userData.vendors.filter(v => !v.company || v.company.trim() === '');
+            
+            // Sort only the named vendors alphabetically
+            const sortedNamedVendors = namedVendors.sort((a, b) => {
+                const nameA = a.company.toLowerCase();
+                const nameB = b.company.toLowerCase();
+                return nameA.localeCompare(nameB);
+            });
+            
+            // Combine: unnamed vendors first (in original order), then sorted named vendors
+            const sortedVendors = [...unnamedVendors, ...sortedNamedVendors];
+            
+            list.innerHTML = '';
+            sortedVendors.forEach((vendor, displayIndex) => {
+                // Find the original index in userData.vendors for update functions
+                const index = userData.vendors.indexOf(vendor);
+                
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.style.border = '2px solid #C9B8A8';
+                
+                // Determine if vendor is expanded (default to false for existing, true for new)
+                const isExpanded = vendor.expanded !== undefined ? vendor.expanded : false;
+                const categoryDisplay = vendor.category || 'Select Category';
+                const companyDisplay = vendor.company || 'Unnamed Vendor';
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleVendor(${index})">
+                        <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                            <h3 style="margin: 0; color: #D4A5A5;">${companyDisplay}</h3>
+                            <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${categoryDisplay}</span>
+                        </div>
+                        <button onclick="event.stopPropagation(); deleteVendor(${index})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                    </div>
+                    <div id="vendor-details-${index}" style="display: ${isExpanded ? 'block' : 'none'}; border-top: 2px solid #F8F6F3; padding-top: 15px; margin-top: 5px; text-align: left;">
+                        <div style="margin-bottom: 15px;">
+                            <label style="font-size: 0.85rem; color: #666; text-align: left;">Category</label>
+                            <select onchange="updateVendor(${index}, 'category', this.value)" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #5A5A5A; text-align: left;">
+                                <option value="" ${!vendor.category || vendor.category === '' ? 'selected' : ''}>Select Category</option>
+                                ${categories.map(c => `<option ${vendor.category === c ? 'selected' : ''}>${c}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="grid-2">
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Company Name</label><input type="text" value="${vendor.company || ''}" onchange="updateVendor(${index}, 'company', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Contact Person</label><input type="text" value="${vendor.contact || ''}" onchange="updateVendor(${index}, 'contact', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Phone</label><input type="tel" value="${vendor.phone || ''}" onchange="updateVendor(${index}, 'phone', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Email</label><input type="email" value="${vendor.email || ''}" onchange="updateVendor(${index}, 'email', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Total Cost</label><div style="position: relative;"><span style="position: absolute; left: 10px; top: 10px; color: #666;">$</span><input type="text" value="${vendor.cost ? formatNumber(vendor.cost) : ''}" onchange="updateVendor(${index}, 'cost', this.value.replace(/,/g,''))" class="input" style="padding: 10px 10px 10px 22px; text-align: left;"></div></div>
+                            <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Amount Paid</label><div style="position: relative;"><span style="position: absolute; left: 10px; top: 10px; color: #666;">$</span><input type="text" value="${vendor.paid ? formatNumber(vendor.paid) : ''}" onchange="updateVendor(${index}, 'paid', this.value.replace(/,/g,''))" class="input" style="padding: 10px 10px 10px 22px; text-align: left;"></div></div>
+                        </div>
+                        <div style="margin-top: 15px;"><label style="font-size: 0.85rem; color: #666; text-align: left;">Notes</label><textarea onchange="updateVendor(${index}, 'notes', this.value)" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; min-height: 60px; font-family: 'Montserrat', sans-serif; text-align: left;">${vendor.notes || ''}</textarea></div>
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        // SEATING TAB FUNCTIONS
+        async function addTable() {
+            if (!currentUser || !userData.tables) return;
+            
+            // Save current scroll position
+            const scrollPos = window.scrollY;
+            
+            const tableNum = userData.tables.length + 1;
+            userData.tables.push({ number: tableNum, seats: 8, guests: [] });
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPos);
+        }
+
+        async function deleteTable(index) {
+            if (!currentUser || !userData.tables) return;
+            
+            if (!confirm('Are you sure you want to delete this table?')) return;
+            
+            userData.tables.splice(index, 1);
+            // Renumber remaining tables
+            userData.tables.forEach((t, i) => t.number = i + 1);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+        }
+
+        async function toggleTable(index) {
+            if (!currentUser || !userData.tables) return;
+            
+            // Toggle the expanded state
+            userData.tables[index].expanded = !userData.tables[index].expanded;
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            
+            renderSeating();
+        }
+
+        async function updateTable(index, field, value) {
+            if (!currentUser || !userData.tables) return;
+            
+            userData.tables[index][field] = value;
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+        }
+
+        async function updateTableGuest(tableIndex, guestIndex, value) {
+            if (!currentUser || !userData.tables) return;
+            
+            const table = userData.tables[tableIndex];
+            const seats = parseInt(table.seats) || 8;
+            
+            // If assigning a guest (not clearing), check party size and if they're already seated
+            if (value) {
+                const selectedGuest = userData.guests.find(g => 
+                    (g.firstName && g.lastName ? `${g.firstName} ${g.lastName}` : g.name) === value
+                );
+                
+                if (selectedGuest) {
+                    // Check RSVP status - only allow "Yes" (Ceremony & Reception) or "Reception Only"
+                    if (selectedGuest.rsvp !== 'Yes' && selectedGuest.rsvp !== 'Reception Only') {
+                        const rsvpText = selectedGuest.rsvp === 'Ceremony Only' ? 'Ceremony Only' : 
+                                        selectedGuest.rsvp === 'No' ? 'Not Attending' : 
+                                        'Pending';
+                        alert(`${value} cannot be seated at the reception. Their RSVP status is "${rsvpText}". Only guests attending the reception can be assigned seats.`);
+                        renderSeating(); // Reset the dropdown to previous value
+                        return;
+                    }
+                    
+                    const partySize = parseInt(selectedGuest.partySize) || 1;
+                    
+                    // Get the display name for this guest to ensure consistent matching
+                    const guestDisplayName = selectedGuest.firstName || selectedGuest.lastName 
+                        ? `${selectedGuest.firstName || ''} ${selectedGuest.lastName || ''}`.trim() 
+                        : selectedGuest.name || 'Unnamed';
+                    
+                    console.log(`=== SEATING VALIDATION ===`);
+                    console.log(`Attempting to seat: ${value}`);
+                    console.log(`Matched to guest: ${guestDisplayName}`);
+                    console.log(`Party size: ${partySize}`);
+                    console.log(`RSVP: ${selectedGuest.rsvp}`);
+                    
+                    // Count how many times this guest is already seated across ALL tables
+                    let timesAlreadySeated = 0;
+                    userData.tables.forEach((t, tIdx) => {
+                        t.guests.forEach((guestName, gIdx) => {
+                            // Don't count the slot we're currently updating
+                            if (!(tIdx === tableIndex && gIdx === guestIndex) && guestName === value) {
+                                timesAlreadySeated++;
+                                console.log(`Found ${value} at table ${t.number}, slot ${gIdx}`);
+                            }
+                        });
+                    });
+                    
+                    console.log(`Times already seated: ${timesAlreadySeated}`);
+                    console.log(`Will be blocked if: ${timesAlreadySeated} >= ${partySize}`);
+                    
+                    // Check if this guest has already been seated the maximum number of times
+                    // If they have party of 3, they can be seated 3 times total (timesAlreadySeated should stay < 3)
+                    if (timesAlreadySeated >= partySize) {
+                        console.log(`BLOCKING: Guest has reached seating limit`);
+                        alert(`${value} has a party size of ${partySize} and all ${partySize} members have already been seated (${timesAlreadySeated} seat(s) currently assigned).`);
+                        renderSeating(); // Reset the dropdown to previous value
+                        return;
+                    }
+                    console.log(`ALLOWING: Guest has not reached seating limit yet`);
+                    
+                    // Count current total slots filled at this specific table (excluding empty slots and the slot being updated)
+                    let currentCount = 0;
+                    table.guests.forEach((guestName, idx) => {
+                        if (guestName && idx !== guestIndex) {
+                            currentCount += 1; // Each filled slot counts as 1, regardless of party size
+                        }
+                    });
+                    
+                    // Check if adding this guest would exceed this table's capacity
+                    if (currentCount + 1 > seats) {
+                        alert(`Cannot add ${value}. This would exceed the table capacity of ${seats} seats. Current count: ${currentCount}`);
+                        renderSeating(); // Reset the dropdown to previous value
+                        return;
+                    }
+                }
+            }
+            
+            userData.tables[tableIndex].guests[guestIndex] = value;
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+        }
+
+        async function addGuestToTable(tableIndex) {
+            if (!currentUser || !userData.tables) return;
+            
+            const table = userData.tables[tableIndex];
+            const seats = parseInt(table.seats) || 8;
+            
+            // Don't allow adding more guests than seats
+            if (table.guests.length >= seats) {
+                alert(`This table only has ${seats} seats. Please increase the seat count or choose a different table.`);
+                return;
+            }
+            
+            userData.tables[tableIndex].guests.push('');
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+        }
+
+        async function removeGuestFromTable(tableIndex, guestIndex) {
+            if (!currentUser || !userData.tables) return;
+            
+            if (!confirm('Are you sure you want to remove this guest from the table?')) return;
+            
+            userData.tables[tableIndex].guests.splice(guestIndex, 1);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderSeating();
+        }
+
+        function renderSeating() {
+            const stats = document.getElementById('seatingStats');
+            const list = document.getElementById('tableList');
+            if (!stats || !list || !userData.tables) return;
+            
+            const totalSeated = userData.tables.reduce((sum, table) => sum + table.guests.filter(g => g).length, 0);
+            const totalCapacity = userData.tables.reduce((sum, table) => sum + parseInt(table.seats || 0), 0);
+            
+            stats.innerHTML = `
+                <div><div class="stat-num">${userData.tables.length}</div><div class="stat-label">Tables</div></div>
+                <div><div class="stat-num">${formatNumber(totalSeated)}</div><div class="stat-label">Seated</div></div>
+                <div><div class="stat-num">${formatNumber(totalCapacity)}</div><div class="stat-label">Total Capacity</div></div>
+            `;
+            
+            list.innerHTML = '';
+            userData.tables.forEach((table, tableIndex) => {
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.style.border = '2px solid #C9B8A8';
+                
+                // Determine if table is expanded (default to false for existing, true for new)
+                const isExpanded = table.expanded !== undefined ? table.expanded : false;
+                const filledSeats = table.guests.filter(g => g).length;
+                
+                // Only show guests attending reception (Yes or Reception Only)
+                const seatingEligibleGuests = userData.guests && userData.guests.length > 0 
+                    ? userData.guests.filter(g => g.rsvp === 'Yes' || g.rsvp === 'Reception Only')
+                    : [];
+                
+                const guestOptions = seatingEligibleGuests.length > 0
+                    ? seatingEligibleGuests.map(g => {
+                        const displayName = g.firstName || g.lastName 
+                            ? `${g.firstName || ''} ${g.lastName || ''}`.trim() 
+                            : g.name || 'Unnamed';
+                        return `<option value="${displayName}">${displayName}</option>`;
+                    }).join('')
+                    : '<option value="">No reception guests added yet</option>';
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleTable(${tableIndex})">
+                        <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                            <h3 style="margin: 0; color: #D4A5A5;">Table ${table.number}</h3>
+                            <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${filledSeats} of ${table.seats} seats</span>
+                        </div>
+                        <button onclick="event.stopPropagation(); deleteTable(${tableIndex})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                    </div>
+                    <div id="table-details-${tableIndex}" style="display: ${isExpanded ? 'block' : 'none'}; border-top: 2px solid #F8F6F3; padding-top: 15px; margin-top: 5px;">
+                        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                            <label style="font-size: 0.85rem; color: #666;">Number of Seats:</label>
+                            <input type="number" value="${table.seats}" onchange="updateTable(${tableIndex}, 'seats', this.value)" style="width: 70px; padding: 8px; border: 2px solid #C9B8A8; border-radius: 4px; text-align: center;">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">${filledSeats} of ${table.seats} seats filled</div>
+                            <div class="progress" style="height: 6px;"><div class="progress-bar" style="width: ${(filledSeats / table.seats) * 100}%;"></div></div>
+                        </div>
+                        <div id="table-guests-${tableIndex}"></div>
+                        ${table.guests.length < table.seats ? `<button onclick="addGuestToTable(${tableIndex})" style="width: 100%; padding: 8px; background: white; border: 2px dashed #C9B8A8; border-radius: 4px; color: #D4A5A5; cursor: pointer; font-size: 0.9rem;">+ Add Guest</button>` : ''}
+                    </div>
+                `;
+                list.appendChild(div);
+                
+                const guestListDiv = document.getElementById('table-guests-' + tableIndex);
+                table.guests.forEach((guestName, guestIndex) => {
+                    const guestDiv = document.createElement('div');
+                    guestDiv.style.cssText = 'display: flex; gap: 8px; margin-bottom: 8px;';
+                    
+                    // Build options with selected state - only show reception attendees
+                    const optionsWithSelected = seatingEligibleGuests.length > 0
+                        ? seatingEligibleGuests.map(g => {
+                            const displayName = g.firstName || g.lastName 
+                                ? `${g.firstName || ''} ${g.lastName || ''}`.trim() 
+                                : g.name || 'Unnamed';
+                            return `<option value="${displayName}" ${displayName === guestName ? 'selected' : ''}>${displayName}</option>`;
+                        }).join('')
+                        : '<option value="">No guests added yet</option>';
+                    
+                    guestDiv.innerHTML = `
+                        <select onchange="updateTableGuest(${tableIndex}, ${guestIndex}, this.value)" style="flex: 1; padding: 8px; background: white; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #5A5A5A; text-align: left;">
+                            <option value="">Select a guest</option>
+                            ${optionsWithSelected}
+                        </select>
+                        <button onclick="removeGuestFromTable(${tableIndex}, ${guestIndex})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                    `;
+                    guestListDiv.appendChild(guestDiv);
+                });
+            });
+        }
+
+        // CHECKLIST TAB FUNCTIONS
+
+        async function deleteTask(index) {
+            if (!currentUser || !userData.tasks) return;
+            
+            if (!confirm('Are you sure you want to delete this task?')) return;
+            
+            userData.tasks.splice(index, 1);
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tasks: userData.tasks,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderChecklist();
+        }
+
+        async function addTaskToPeriod(period) {
+            if (!currentUser || !userData.tasks) return;
+            
+            const taskText = prompt(`Add a task for "${period}":`);
+            if (!taskText) return;
+            
+            userData.tasks.push({
+                period: period,
+                task: taskText,
+                completed: false
+            });
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tasks: userData.tasks,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderChecklist();
+        }
+        async function toggleTask(index) {
+            if (!currentUser || !userData.tasks) return;
+            
+            userData.tasks[index].completed = !userData.tasks[index].completed;
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                tasks: userData.tasks,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderChecklist();
+        }
+
+        async function toggleChecklistPeriod(period) {
+            if (!currentUser) return;
+            
+            // Initialize expandedPeriods if it doesn't exist
+            if (!userData.expandedPeriods) {
+                userData.expandedPeriods = {};
+            }
+            
+            // Toggle the period
+            userData.expandedPeriods[period] = !userData.expandedPeriods[period];
+            
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                expandedPeriods: userData.expandedPeriods,
+                updatedAt: new Date().toISOString()
+            });
+            
+            renderChecklist();
+        }
+
+        function renderChecklist() {
+            const completedDiv = document.getElementById('tasksCompleted');
+            const percentDiv = document.getElementById('tasksPercent');
+            const progressBar = document.getElementById('tasksProgress');
+            const taskList = document.getElementById('taskList');
+            
+            if (!completedDiv || !userData.tasks) return;
+            
+            // Initialize expandedPeriods if it doesn't exist
+            if (!userData.expandedPeriods) {
+                userData.expandedPeriods = {};
+            }
+            
+            const completedCount = userData.tasks.filter(t => t.completed).length;
+            const totalCount = userData.tasks.length;
+            const progressPercent = totalCount > 0 ? ((completedCount / totalCount) * 100).toFixed(0) : 0;
+            
+            completedDiv.textContent = completedCount + ' / ' + totalCount;
+            percentDiv.textContent = progressPercent + '%';
+            progressBar.style.width = progressPercent + '%';
+            
+            const groupedTasks = {};
+            userData.tasks.forEach(task => {
+                if (!groupedTasks[task.period]) groupedTasks[task.period] = [];
+                groupedTasks[task.period].push(task);
+            });
+            
+            taskList.innerHTML = '';
+            Object.entries(groupedTasks).forEach(([period, tasks]) => {
+                const periodCompleted = tasks.filter(t => t.completed).length;
+                const isExpanded = userData.expandedPeriods[period] !== undefined ? userData.expandedPeriods[period] : true; // Default expanded
+                
+                const periodDiv = document.createElement('div');
+                periodDiv.style.marginBottom = '25px';
+                periodDiv.style.border = '2px solid #C9B8A8';
+                periodDiv.style.borderRadius = '8px';
+                periodDiv.style.padding = '15px';
+                periodDiv.style.background = 'white';
+                
+                const header = document.createElement('div');
+                header.style.cssText = 'display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: 10px;';
+                header.onclick = () => toggleChecklistPeriod(period);
+                header.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                        <h3 style="margin: 0;">${period}</h3>
+                    </div>
+                    <span style="font-size: 0.9rem; color: #666;">${periodCompleted} of ${tasks.length} completed</span>
+                `;
+                periodDiv.appendChild(header);
+                
+                const tasksContainer = document.createElement('div');
+                tasksContainer.style.display = isExpanded ? 'block' : 'none';
+                tasksContainer.style.borderTop = isExpanded ? '2px solid #F8F6F3' : 'none';
+                tasksContainer.style.paddingTop = isExpanded ? '15px' : '0';
+                tasksContainer.style.marginTop = isExpanded ? '10px' : '0';
+                
+                tasks.forEach(task => {
+                    const globalIndex = userData.tasks.findIndex(t => t === task);
+                    const taskDiv = document.createElement('div');
+                    taskDiv.className = 'task' + (task.completed ? ' done' : '');
+                    taskDiv.innerHTML = `
+                        <div class="checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${globalIndex})">${task.completed ? 'âœ“' : ''}</div>
+                        <span onclick="toggleTask(${globalIndex})" style="flex: 1; color: #5A5A5A; cursor: pointer;">${task.task}</span>
+                        <button onclick="deleteTask(${globalIndex})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                    `;
+                    tasksContainer.appendChild(taskDiv);
+                });
+                
+                // Add "Add Task" button for this period
+                const addTaskBtn = document.createElement('button');
+                addTaskBtn.style.cssText = 'width: 100%; padding: 10px; margin-top: 10px; background: white; border: 2px dashed #C9B8A8; border-radius: 4px; color: #D4A5A5; cursor: pointer; font-size: 0.9rem;';
+                addTaskBtn.textContent = '+ Add Task';
+                addTaskBtn.onclick = () => addTaskToPeriod(period);
+                tasksContainer.appendChild(addTaskBtn);
+                
+                periodDiv.appendChild(tasksContainer);
+                taskList.appendChild(periodDiv);
+            });
+        }
+
+        // EXPORT GUEST LIST FUNCTION
+        function exportGuestList() {
+            if (!userData.guests || userData.guests.length === 0) {
+                alert('No guests to export. Please add guests first.');
+                return;
+            }
+            
+            // Create CSV content
+            let csvContent = "First Name,Last Name,Email,Phone,Address,Dietary Restrictions,Party Size,RSVP Status,Meal Selection,Notes\n";
+            
+            userData.guests.forEach(guest => {
+                const firstName = (guest.firstName || '').replace(/,/g, ';');
+                const lastName = (guest.lastName || '').replace(/,/g, ';');
+                const email = (guest.email || '').replace(/,/g, ';');
+                const phone = (guest.phone || '').replace(/,/g, ';');
+                const address = (guest.address || '').replace(/,/g, ';');
+                const dietary = (guest.dietary || '').replace(/,/g, ';');
+                const partySize = guest.partySize || 1;
+                const rsvp = (guest.rsvp || 'Pending').replace(/,/g, ';');
+                
+                // Handle meal selection
+                let meal = '';
+                if (partySize === 1) {
+                    meal = (guest.meal || '').replace(/,/g, ';');
+                } else if (guest.mealBreakdown) {
+                    const mealParts = [];
+                    Object.entries(guest.mealBreakdown).forEach(([mealType, count]) => {
+                        if (count > 0) {
+                            mealParts.push(`${mealType}: ${count}`);
+                        }
+                    });
+                    meal = mealParts.join('; ');
+                }
+                
+                const notes = (guest.notes || '').replace(/,/g, ';').replace(/\n/g, ' ');
+                
+                csvContent += `"${firstName}","${lastName}","${email}","${phone}","${address}","${dietary}","${partySize}","${rsvp}","${meal}","${notes}"\n`;
+            });
+            
+            // Create download link
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'wedding_guest_list.csv');
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // PRINT SEATING CHART FUNCTION
+        function printSeatingChart() {
+            if (!userData.tables || userData.tables.length === 0) {
+                alert('No seating chart to print. Please add tables and assign guests first.');
+                return;
+            }
+            
+            // Create printable HTML
+            let printContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Wedding Seating Chart</title>
+                    <style>
+                        @media print {
+                            body { margin: 0; padding: 20px; font-family: 'Arial', sans-serif; }
+                            .no-print { display: none; }
+                        }
+                        body { font-family: 'Arial', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+                        h1 { color: #D4A5A5; text-align: center; margin-bottom: 30px; }
+                        .table-card { border: 2px solid #C9B8A8; border-radius: 8px; padding: 15px; margin-bottom: 20px; page-break-inside: avoid; }
+                        .table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 2px solid #F8F6F3; }
+                        .table-name { font-size: 1.2rem; font-weight: 600; color: #5A5A5A; }
+                        .table-capacity { font-size: 0.9rem; color: #666; }
+                        .guest-list { padding-left: 0; }
+                        .guest-item { padding: 5px 0; color: #5A5A5A; list-style: none; }
+                        .guest-item:before { content: "â€¢ "; color: #D4A5A5; font-weight: bold; }
+                        .print-btn { background: #D4A5A5; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 20px; }
+                        .print-btn:hover { background: #C9B8A8; }
+                    </style>
+                </head>
+                <body>
+                    <button class="print-btn no-print" onclick="window.print()">ðŸ–¨ï¸ Print This Page</button>
+                    <h1>Wedding Seating Chart</h1>
+            `;
+            
+            userData.tables.forEach(table => {
+                const tableName = `Table ${table.number || ''}`;
+                const capacity = parseInt(table.seats) || 0;
+                const assignedGuests = table.guests ? table.guests.filter(g => g && g.trim() !== '') : [];
+                
+                printContent += `
+                    <div class="table-card">
+                        <div class="table-header">
+                            <div class="table-name">${tableName}</div>
+                            <div class="table-capacity">Seats ${capacity} guests (${assignedGuests.length} assigned)</div>
+                        </div>
+                        <ul class="guest-list">
+                `;
+                
+                if (assignedGuests.length > 0) {
+                    assignedGuests.forEach(guestName => {
+                        printContent += `<li class="guest-item">${guestName}</li>`;
+                    });
+                } else {
+                    printContent += `<li class="guest-item" style="color: #999;">No guests assigned yet</li>`;
+                }
+                
+                printContent += `
+                        </ul>
+                    </div>
+                `;
+            });
+            
+            printContent += `
+                </body>
+                </html>
+            `;
+            
+            // Open in new window and print
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+
+        // Make all new functions global
+        window.addBudgetCategory = addBudgetCategory;
+        window.deleteBudgetCategory = deleteBudgetCategory;
+        window.addGuest = addGuest;
+        window.addVendor = addVendor;
+        window.deleteVendor = deleteVendor;
+        window.toggleVendor = toggleVendor;
+        window.updateVendor = updateVendor;
+        window.addTable = addTable;
+        window.deleteTable = deleteTable;
+        window.toggleTable = toggleTable;
+        window.updateTable = updateTable;
+        window.updateTableGuest = updateTableGuest;
+        window.addGuestToTable = addGuestToTable;
+        window.removeGuestFromTable = removeGuestFromTable;
+        window.deleteTask = deleteTask;
+        window.addTaskToPeriod = addTaskToPeriod;
+        window.toggleTask = toggleTask;
+        window.toggleChecklistPeriod = toggleChecklistPeriod;
+
+        window.deleteGuest = deleteGuest;
+        window.updateGuest = updateGuest;
+        window.toggleGuest = toggleGuest;
+        window.handleSortChange = handleSortChange;
+        window.updateMealBreakdown = updateMealBreakdown;
+        window.addMealOption = addMealOption;
+        window.deleteMealOption = deleteMealOption;
+        window.toggleMealOptions = toggleMealOptions;
+        window.exportGuestList = exportGuestList;
+        window.printSeatingChart = printSeatingChart;
+
+
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).style.display = 'block';
+            event.target.classList.add('active');
+            
+            if (tabName === 'overview') updateStats();
+            if (tabName === 'budget') renderBudget();
+            if (tabName === 'guests') renderGuests();
+            if (tabName === 'vendors') renderVendors();
+            if (tabName === 'seating') renderSeating();
+            if (tabName === 'checklist') renderChecklist();
+        }
+    </script>
+</body>
+</html>
