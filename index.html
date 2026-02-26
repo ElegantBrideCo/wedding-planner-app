@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Planner - Elegant Bride Plans</title>
+    <title>Wedding Planner - Elegant Bride Co.</title>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #F8F6F3; }
+        body { font-family: 'Montserrat', sans-serif; background: #F0F0EE; }
         
         /* AUTH SCREEN */
         .auth-screen {
             min-height: 100vh;
-            background: linear-gradient(to bottom, #F8F6F3 0%, #FAF8F6 100%);
+            background: #F0F0EE;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -97,7 +97,7 @@
         }
         .auth-btn {
             width: 100%;
-            background: #D4A5A5;
+            background: #A8B89C;
             color: white;
             border: none;
             padding: 16px;
@@ -108,10 +108,10 @@
             transition: background 0.3s;
         }
         .auth-btn:hover {
-            background: #a86857;
+            background: #8FA98F;
         }
         .auth-btn:disabled {
-            background: #C9B8A8;
+            background: #E8DDD6;
             cursor: not-allowed;
         }
         .error-message {
@@ -140,7 +140,7 @@
             display: block;
         }
         .header {
-            background: linear-gradient(to bottom, #F8F6F3 0%, #FAF8F6 100%);
+            background: white;
             padding: 40px 20px;
             text-align: center;
             position: relative;
@@ -155,7 +155,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             font-weight: 600;
-            color: #B8746B;
+            color: #D4A5A5;
             text-align: center;
             line-height: 1.2;
             margin-bottom: 10px;
@@ -163,7 +163,7 @@
         .subtitle {
             font-family: 'Allura', cursive;
             font-size: 2rem;
-            color: #7A8C6F;
+            color: #A8B89C;
         }
         .logout-btn {
             position: absolute;
@@ -196,11 +196,12 @@
             font-size: 0.95rem;
         }
         .tab:hover {
-            background: rgba(193,123,108,0.3);
+            background: rgba(168,184,156,0.3);
         }
         .tab.active {
-            background: #D4A5A5;
+            background: #A8B89C;
             font-weight: 600;
+            color: white;
         }
         .container {
             max-width: 1200px;
@@ -221,7 +222,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #C9B8A8;
+            background: #E8DDD6;
             color: #5A5A5A;
             padding: 12px 20px;
             border-radius: 8px;
@@ -251,7 +252,7 @@
             color: #5A5A5A;
         }
         .btn {
-            background: #D4A5A5;
+            background: #A8B89C;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -261,7 +262,7 @@
             font-size: 1rem;
         }
         .btn:hover {
-            background: #a86857;
+            background: #8FA98F;
         }
         .input {
             width: 100%;
@@ -298,7 +299,7 @@
             gap: 20px;
         }
         .card {
-            background: #F8F6F3;
+            background: white;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -322,7 +323,7 @@
         }
         .progress-bar {
             height: 100%;
-            background: #C9B8A8;
+            background: #E8DDD6;
             transition: width 0.3s;
         }
         .loading {
@@ -359,7 +360,7 @@
             flex-shrink: 0;
         }
         .checkbox.checked {
-            background: #C9B8A8;
+            background: #A8B89C;
             color: white;
             font-weight: 600;
         }
@@ -522,7 +523,7 @@
         <div class="auth-container">
             <div class="auth-logo">
                 <h1>Wedding Planner</h1>
-                <div class="subtitle">by Elegant Bride Plans</div>
+                <div class="subtitle">by Elegant Bride Co.</div>
             </div>
 
             <div id="authError" class="error-message" style="display: none;"></div>
@@ -571,17 +572,17 @@
     <div id="appScreen" class="app-screen">
         <div class="header">
             <div class="title">Complete Wedding Planner</div>
-            <div class="subtitle">by Elegant Bride Plans</div>
+            <div class="subtitle">by Elegant Bride Co.</div>
             <button onclick="handleLogout()" style="position: absolute; top: 20px; right: 20px; background: white; border: 2px solid #D4A5A5; color: #D4A5A5; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">Logout</button>
         </div>
 
         <div class="tabs">
             <button class="tab active" onclick="showTab('overview')">Overview</button>
-            <button class="tab" onclick="showTab('budget')">ðŸ’° Budget</button>
-            <button class="tab" onclick="showTab('guests')">ðŸ‘¥ Guests</button>
-            <button class="tab" onclick="showTab('vendors')"><span style="color: #A8B89C;">ðŸ’¼</span> Vendors</button>
-            <button class="tab" onclick="showTab('seating')"><span style="color: #A8B89C;">ðŸª‘</span> Seating</button>
-            <button class="tab" onclick="showTab('checklist')"><span style="color: #A8B89C;">âœ“</span> Checklist</button>
+            <button class="tab" onclick="showTab('budget')">Budget</button>
+            <button class="tab" onclick="showTab('guests')">Guests</button>
+            <button class="tab" onclick="showTab('seating')">Seating</button>
+            <button class="tab" onclick="showTab('vendors')">Vendors</button>
+            <button class="tab" onclick="showTab('checklist')">Checklist</button>
         </div>
 
         <div class="container">
@@ -606,19 +607,19 @@
                     
                     
                     <!-- Wedding Date & Countdown Combined -->
-                    <div style="background: linear-gradient(135deg, #D4A5A5 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Wedding Date</div>
+                    <div style="background: linear-gradient(135deg, #EDD5D5 0%, #E8DDD6 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); color: #5A5A5A;">
+                        <div style="color: #5A5A5A; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Wedding Date</div>
                         <input type="date" class="input" id="weddingDate" style="width: 90%; max-width: 280px; padding: 12px; font-size: 1.1rem; text-align: center; border: none; border-radius: 6px; box-sizing: border-box; background: white; color: #5A5A5A; font-family: 'Montserrat', sans-serif; margin-bottom: 25px; display: block; margin-left: auto; margin-right: auto;">
                         
                         <div style="border-top: 2px solid rgba(255,255,255,0.3); padding-top: 20px; margin-top: 5px;">
-                            <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">Days Until Wedding</div>
-                            <div id="daysUntil" style="font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600; line-height: 1;">244</div>
+                            <div style="color: #5A5A5A; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">Days Until Wedding</div>
+                            <div id="daysUntil" style="font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600; line-height: 1;">—</div>
                         </div>
                     </div>
                     
                     <!-- Budget - Combined Elegant Section -->
-                    <div style="background: linear-gradient(135deg, #A8B89C 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Total Budget</div>
+                    <div style="background: linear-gradient(135deg, #C8D9C0 0%, #E8DDD6 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); color: #5A5A5A;">
+                        <div style="color: #5A5A5A; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Total Budget</div>
                         <div style="background: white; padding: 12px; border-radius: 6px; max-width: 280px; margin: 0 auto 25px;">
                             <div style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                 <span style="color: #5A5A5A; font-size: 1.4rem; font-family: 'Cormorant Garamond', serif; font-weight: 600;">$</span>
@@ -627,51 +628,51 @@
                         </div>
                         
                         <div style="border-top: 2px solid rgba(255,255,255,0.3); padding-top: 20px; margin-top: 5px;">
-                            <div style="color: white; font-size: 0.85rem; margin-bottom: 15px; opacity: 0.9;">Budget Status</div>
+                            <div style="color: #5A5A5A; font-size: 0.85rem; margin-bottom: 15px; opacity: 0.9;">Budget Status</div>
                             <div style="display: flex; justify-content: space-around; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">
                                 <div>
-                                    <div id="budgetSpent" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
-                                    <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Spent</div>
+                                    <div id="budgetSpent" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">$0</div>
+                                    <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Spent</div>
                                 </div>
                                 <div>
-                                    <div id="budgetRemaining" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
-                                    <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Remaining</div>
+                                    <div id="budgetRemaining" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">$0</div>
+                                    <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Remaining</div>
                                 </div>
                             </div>
                             <div style="background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div id="budgetProgress" style="background: white; height: 100%; width: 0%; transition: width 0.3s ease;"></div>
                             </div>
-                            <div id="budgetTotal" style="color: white; font-size: 0.8rem; margin-top: 8px; opacity: 0.9;">of $0 total</div>
+                            <div id="budgetTotal" style="color: #5A5A5A; font-size: 0.8rem; margin-top: 8px; opacity: 0.9;">of $0 total</div>
                         </div>
                     </div>
                     
                     <!-- Guest Summary -->
-                    <div style="background: linear-gradient(135deg, #C9B8A8 0%, #D4A5A5 100%); padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                        <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Guest Summary</div>
+                    <div style="background: linear-gradient(135deg, #E8DDD6 0%, #EDD5D5 100%); padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.08); color: #5A5A5A;">
+                        <div style="color: #5A5A5A; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Guest Summary</div>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px;">
                             <div>
-                                <div id="overviewTotalGuests" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Total Invited</div>
+                                <div id="overviewTotalGuests" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Total Invited</div>
                             </div>
                             <div>
-                                <div id="overviewCeremonyReception" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony & Reception</div>
+                                <div id="overviewCeremonyReception" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony & Reception</div>
                             </div>
                             <div>
-                                <div id="overviewCeremonyOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony Only</div>
+                                <div id="overviewCeremonyOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Ceremony Only</div>
                             </div>
                             <div>
-                                <div id="overviewReceptionOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Reception Only</div>
+                                <div id="overviewReceptionOnly" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Reception Only</div>
                             </div>
                             <div>
-                                <div id="overviewPending" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Pending</div>
+                                <div id="overviewPending" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Pending</div>
                             </div>
                             <div>
-                                <div id="overviewDeclined" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">0</div>
-                                <div style="color: white; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Not Attending</div>
+                                <div id="overviewDeclined" style="font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">0</div>
+                                <div style="color: #5A5A5A; font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Not Attending</div>
                             </div>
                         </div>
                     </div>
@@ -684,16 +685,16 @@
                 <p style="color: #666; margin-bottom: 25px;">Track your wedding expenses by category</p>
                 
                 <!-- Budget Summary at Top - Elegant Design -->
-                <div style="background: linear-gradient(135deg, #A8B89C 0%, #C9B8A8 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <div style="color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Budget Summary</div>
+                <div style="background: linear-gradient(135deg, #C8D9C0 0%, #E8DDD6 100%); padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); color: #5A5A5A;">
+                    <div style="color: #5A5A5A; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Budget Summary</div>
                     <div style="display: flex; justify-content: space-around; margin-bottom: 20px; flex-wrap: wrap; gap: 20px;">
                         <div>
-                            <div id="totalSpentDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
-                            <div style="color: white; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Total Spent</div>
+                            <div id="totalSpentDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">$0</div>
+                            <div style="color: #5A5A5A; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Total Spent</div>
                         </div>
                         <div>
-                            <div id="totalRemainingDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;">$0</div>
-                            <div style="color: white; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Remaining</div>
+                            <div id="totalRemainingDisplay" style="font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; color: #5A5A5A; font-weight: 600;">$0</div>
+                            <div style="color: #5A5A5A; font-size: 0.8rem; opacity: 0.9; margin-top: 8px;">Remaining</div>
                         </div>
                     </div>
                 </div>
@@ -722,7 +723,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
                     <div><h2 style="margin: 0;">Guest List</h2><p style="color: #666; margin: 5px 0 0;">Manage guests and track RSVPs</p></div>
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                        <button onclick="exportGuestList()" class="btn" style="background: #A8B89C !important; white-space: nowrap;">ðŸ“¥ Export Guest List</button>
+                        <button onclick="exportGuestList()" class="btn" style="background: #A8B89C !important; white-space: nowrap;">Export Guest List</button>
                         <select id="guestSort" onchange="handleSortChange()" style="padding: 10px; border: 2px solid #C9B8A8; border-radius: 6px; font-size: 0.9rem; color: #5A5A5A; background: white;">
                             <option value="default">Filter: All Guests</option>
                             <option value="rsvp-yes">Filter: Ceremony & Reception</option>
@@ -740,7 +741,7 @@
                 <div class="card" style="margin-bottom: 25px; border: 2px solid #C9B8A8;">
                     <div onclick="toggleMealOptions()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: 15px; border-bottom: 2px solid #F8F6F3;">
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <span id="mealOptionsArrow" style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s;">â–¼</span>
+                            <span id="mealOptionsArrow" style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s;">▼</span>
                             <div>
                                 <h3 style="margin: 0; font-size: 1.1rem;">Meal Management</h3>
                                 <p style="color: #666; font-size: 0.85rem; margin: 5px 0 0;">Manage meal options and view counts</p>
@@ -783,7 +784,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
                     <div><h2 style="margin: 0;">Seating Chart</h2><p style="color: #666; margin: 5px 0 0;">Plan reception seating</p></div>
                     <div style="display: flex; gap: 10px;">
-                        <button onclick="printSeatingChart()" class="btn" style="background: #C9B8A8 !important; white-space: nowrap;">ðŸ–¨ï¸ Print Seating Chart</button>
+                        <button onclick="printSeatingChart()" class="btn" style="background: #D4A5A5 !important; white-space: nowrap;">🖨️ Print Seating Chart</button>
                         <button class="btn" style="background: #A8B89C !important;" onclick="addTable()">+ Add Table</button>
                     </div>
                 </div>
@@ -793,8 +794,14 @@
 
             <!-- CHECKLIST TAB -->
             <div id="checklist" class="content">
-                <h2>Wedding Planning Checklist</h2>
-                <p style="color: #666; margin-bottom: 25px;">Stay organized with this timeline-based checklist</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h2 style="margin: 0;">Wedding Planning Checklist</h2>
+                        <p style="color: #666; margin: 5px 0 0;">Stay organized with this timeline-based checklist</p>
+                    </div>
+                    <button onclick="printChecklist()" class="btn" style="background: #D4A5A5 !important; white-space: nowrap;">🖨️ Print Checklist</button>
+                </div>
+                <div style="margin-bottom: 25px;"></div>
                 <div class="card" style="padding: 25px; margin-bottom: 30px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <div>
@@ -809,7 +816,7 @@
             </div>
         </div>
 
-        <div class="save-indicator" id="saveIndicator">âœ“ Saved to cloud</div>
+        <div class="save-indicator" id="saveIndicator">✓ Saved to cloud</div>
     </div>
 
     <!-- Firebase SDK -->
@@ -1197,12 +1204,14 @@
         function updateStats() {
             // Days until wedding
             const dateStr = document.getElementById('weddingDate').value;
+            const daysEl = document.getElementById('daysUntil');
             if (dateStr) {
                 const days = Math.ceil((new Date(dateStr) - new Date()) / (1000 * 60 * 60 * 24));
-                const daysEl = document.getElementById('daysUntil');
                 if (daysEl) {
                     daysEl.textContent = formatNumber(days);
                 }
+            } else {
+                if (daysEl) daysEl.textContent = '—';
             }
 
             // Budget
@@ -1398,7 +1407,8 @@
             }
             
             const labels = [];
-            const data = [];
+            const estimatedData = [];
+            const actualData = [];
             const colors = [
                 '#D4A5A5', '#A8B89C', '#E8D5C4', '#C8D4E0',
                 '#F0E6E0', '#D8E8D8', '#E6D9CC', '#E0D8E8',
@@ -1407,17 +1417,20 @@
             ];
             
             Object.entries(allCategories).forEach(([key, name]) => {
+                const estimated = parseFloat(userData.budget[key]?.estimated || 0);
                 const actual = parseFloat(userData.budget[key]?.actual || 0);
-                if (actual > 0) {
+                if (estimated > 0 || actual > 0) {
                     labels.push(name);
-                    data.push(actual);
+                    estimatedData.push(estimated);
+                    actualData.push(actual);
                 }
             });
             
             // If no data, show a placeholder
-            if (data.length === 0) {
-                labels.push('No expenses yet');
-                data.push(1);
+            if (labels.length === 0) {
+                labels.push('No budget set yet');
+                estimatedData.push(0);
+                actualData.push(0);
             }
             
             // Destroy existing chart
@@ -1432,12 +1445,22 @@
                 type: 'bar',
                 data: {
                     labels: labels,
-                    datasets: [{
-                        data: data,
-                        backgroundColor: colors,
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
+                    datasets: [
+                        {
+                            label: 'Estimated',
+                            data: estimatedData,
+                            backgroundColor: '#D4A5A5',
+                            borderWidth: 1,
+                            borderColor: '#fff'
+                        },
+                        {
+                            label: 'Actual',
+                            data: actualData,
+                            backgroundColor: '#A8B89C',
+                            borderWidth: 1,
+                            borderColor: '#fff'
+                        }
+                    ]
                 },
                 options: {
                     indexAxis: 'y',
@@ -1445,12 +1468,12 @@
                     maintainAspectRatio: false,
                     layout: {
                         padding: {
-                            right: 80
+                            right: 140
                         }
                     },
                     plugins: {
                         legend: {
-                            display: false,
+                            display: true,
                             labels: {
                                 font: {
                                     family: "'Montserrat', sans-serif",
@@ -1463,11 +1486,9 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed.x || context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return label + ': $' + value.toLocaleString() + ' (' + percentage + '%)';
+                                    const value = context.parsed.x || 0;
+                                    const label = context.dataset.label || '';
+                                    return label + ': $' + value.toLocaleString();
                                 }
                             }
                         },
@@ -1478,13 +1499,12 @@
                             offset: 4,
                             font: {
                                 weight: 'bold',
-                                size: window.innerWidth < 768 ? 14 : 16,
+                                size: window.innerWidth < 768 ? 10 : 12,
                                 family: "'Montserrat', sans-serif"
                             },
-                            formatter: function(value, context) {
-                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                const percentage = ((value / total) * 100).toFixed(0);
-                                return '$' + value.toLocaleString() + ' (' + percentage + '%)';
+                            formatter: function(value) {
+                                if (!value || value === 0) return '';
+                                return '$' + value.toLocaleString();
                             }
                         }
                     },
@@ -1552,7 +1572,7 @@
                 div.innerHTML = `
                     <div id="budget-header-${key}" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: ${isCollapsed ? '0' : '15px'}; border-bottom: ${isCollapsed ? 'none' : '2px solid #F8F6F3'};">
                         <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
-                            <span style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s; display: inline-block; transform: rotate(${isCollapsed ? '0' : '90'}deg);">â–¶</span>
+                            <span style="font-size: 1.2rem; color: #C9B8A8; transition: transform 0.2s; display: inline-block; transform: rotate(${isCollapsed ? '0' : '90'}deg);">▶</span>
                             <div>
                                 <div style="font-weight: 600; color: #5A5A5A; font-size: 1rem;">${name}</div>
                                 <div style="font-size: 0.85rem; color: #999; margin-top: 2px;">Budget: $${formatNumber(est)} | Spent: $${formatNumber(act)}</div>
@@ -1697,21 +1717,59 @@
             const guest = userData.guests[index];
             userData.guests[index][field] = value;
             
-            // If party size changed, clear meal breakdown
+            // If party size changed, sync partyMembers array
             if (field === 'partySize') {
+                const newSize = parseInt(value) || 1;
+                const numMembers = newSize - 1; // host is always 1
+                if (!userData.guests[index].partyMembers) userData.guests[index].partyMembers = [];
+                const current = userData.guests[index].partyMembers.length;
+
+                if (numMembers > current) {
+                    // Add new blank members
+                    for (let i = current; i < numMembers; i++) {
+                        userData.guests[index].partyMembers.push({ name: '', rsvp: 'Pending', meal: '', dietary: '' });
+                    }
+                } else if (numMembers < current) {
+                    // Ask before removing
+                    const removing = current - numMembers;
+                    const confirmed = confirm(`Reducing party size will remove ${removing} party member${removing > 1 ? 's' : ''} and their data. Are you sure?`);
+                    if (!confirmed) {
+                        // Revert the value in userData and re-render
+                        userData.guests[index].partySize = current + 1;
+                        renderGuests();
+                        return;
+                    }
+                    // Remove party member seats from tables
+                    const hostName = userData.guests[index].firstName || userData.guests[index].lastName
+                        ? `${userData.guests[index].firstName || ''} ${userData.guests[index].lastName || ''}`.trim()
+                        : userData.guests[index].name || 'Unnamed';
+                    for (let i = numMembers; i < current; i++) {
+                        const member = userData.guests[index].partyMembers[i];
+                        const memberName = (member.name && member.name.trim()) ? member.name.trim() : `Guest ${i + 1}`;
+                        const seatLabel = `${hostName} - ${memberName}`;
+                        if (userData.tables) {
+                            userData.tables.forEach(table => {
+                                table.guests = table.guests.map(g => g === seatLabel ? '' : g);
+                            });
+                        }
+                    }
+                    userData.guests[index].partyMembers = userData.guests[index].partyMembers.slice(0, numMembers);
+                }
+                // Clear meal breakdown since party composition changed
                 userData.guests[index].mealBreakdown = {};
                 userData.guests[index].meal = '';
             }
             
-            // If RSVP changed to Ceremony Only or Not Attending, remove from all table seats
+            // If RSVP changed to Ceremony Only or Not Attending, remove only THIS guest from seating
+            // Party members are never affected by the host's RSVP change - each person is independent
             if (field === 'rsvp' && (value === 'Ceremony Only' || value === 'No')) {
                 const guestName = guest.firstName || guest.lastName 
                     ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim() 
                     : guest.name || 'Unnamed';
                 
-                // Remove this guest from all tables
                 if (userData.tables) {
                     userData.tables.forEach(table => {
+                        // Remove only the main guest seat, never party members
                         table.guests = table.guests.map(g => g === guestName ? '' : g);
                     });
                 }
@@ -1798,7 +1856,9 @@
             
             // If party size, RSVP, or meal changed, re-render to show/hide meal breakdown and warnings
             if (field === 'partySize' || field === 'rsvp' || field === 'meal') {
+                window.skipGuestSort = true;
                 renderGuests();
+                window.skipGuestSort = false;
             }
             
             // If firstName or lastName changed, update seating dropdown
@@ -1825,7 +1885,85 @@
             showSaveIndicator();
             
             updateMealCountDisplay();
-            renderGuests(); // Re-render to update the warning/count
+            window.skipGuestSort = true; renderGuests(); window.skipGuestSort = false; // Re-render to update the warning/count
+        }
+
+
+        // ── PARTY MEMBERS ──────────────────────────────────────────────────────
+        async function addPartyMember(guestIndex) {
+            const guest = userData.guests[guestIndex];
+            if (!guest.partyMembers) guest.partyMembers = [];
+            guest.partyMembers.push({ name: '', rsvp: guest.rsvp || 'Pending' });
+            // Keep partySize in sync
+            guest.partySize = 1 + guest.partyMembers.length;
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            window.skipGuestSort = true; renderGuests(); window.skipGuestSort = false;
+        }
+
+        async function updatePartyMember(guestIndex, memberIndex, field, value) {
+            const guest = userData.guests[guestIndex];
+            if (!guest.partyMembers) return;
+            guest.partyMembers[memberIndex][field] = value;
+
+            // If RSVP changed to Ceremony Only or Not Attending, remove from tables
+            if (field === 'rsvp' && (value === 'Ceremony Only' || value === 'No')) {
+                const hostName = guest.firstName || guest.lastName
+                    ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim()
+                    : guest.name || 'Unnamed';
+                const memberName = (guest.partyMembers[memberIndex].name && guest.partyMembers[memberIndex].name.trim())
+                    ? guest.partyMembers[memberIndex].name.trim()
+                    : `Guest ${memberIndex + 1}`;
+                const seatLabel = `${hostName} - ${memberName}`;
+                if (userData.tables) {
+                    userData.tables.forEach(table => {
+                        table.guests = table.guests.map(g => g === seatLabel ? '' : g);
+                    });
+                }
+            }
+
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            updateMealCountDisplay();
+            // Re-render on meal change too so warning disappears when meal is selected
+            if (field === 'rsvp' || field === 'name' || field === 'meal') { window.skipGuestSort = true; renderGuests(); window.skipGuestSort = false; }
+        }
+
+        async function deletePartyMember(guestIndex, memberIndex) {
+            const guest = userData.guests[guestIndex];
+            if (!guest.partyMembers) return;
+
+            // Remove from tables first
+            const hostName = guest.firstName || guest.lastName
+                ? `${guest.firstName || ''} ${guest.lastName || ''}`.trim()
+                : guest.name || 'Unnamed';
+            const memberName = (guest.partyMembers[memberIndex].name && guest.partyMembers[memberIndex].name.trim()) 
+                ? guest.partyMembers[memberIndex].name.trim() 
+                : `Guest ${memberIndex + 1}`;
+            const seatLabel = `${hostName} - ${memberName}`;
+            if (userData.tables) {
+                userData.tables.forEach(table => {
+                    table.guests = table.guests.map(g => g === seatLabel ? '' : g);
+                });
+            }
+
+            guest.partyMembers.splice(memberIndex, 1);
+            guest.partySize = 1 + guest.partyMembers.length;
+
+            await updateDoc(doc(db, 'users', currentUser.uid), {
+                guests: userData.guests,
+                tables: userData.tables,
+                updatedAt: new Date().toISOString()
+            });
+            showSaveIndicator();
+            renderGuests();
         }
 
         function updateMealCountDisplay() {
@@ -1833,25 +1971,23 @@
             if (mealCountDiv && userData.mealOptions) {
                 const mealCounts = {};
                 userData.mealOptions.forEach(meal => mealCounts[meal] = 0);
+                // Count party member meals too
                 
                 userData.guests.forEach(guest => {
-                    // Count meals for guests attending reception (Yes or Reception Only)
-                    if (guest.rsvp === 'Yes' || guest.rsvp === 'Reception Only') {
-                        const partySize = parseInt(guest.partySize) || 1;
-                        
-                        if (partySize === 1 && guest.meal) {
-                            // Single guest - use simple meal selection
-                            if (mealCounts[guest.meal] !== undefined) {
-                                mealCounts[guest.meal] += 1;
+                    // Count anyone NOT declined or ceremony-only
+                    const notComing = ['No', 'Ceremony Only'];
+                    // Count host meal
+                    if (!notComing.includes(guest.rsvp) && guest.meal && mealCounts[guest.meal] !== undefined) {
+                        mealCounts[guest.meal]++;
+                    }
+                    // Count each party member's individual meal
+                    if (guest.partyMembers && guest.partyMembers.length > 0) {
+                        guest.partyMembers.forEach(member => {
+                            const memberRsvp = member.rsvp || 'Pending';
+                            if (!notComing.includes(memberRsvp) && member.meal && mealCounts[member.meal] !== undefined) {
+                                mealCounts[member.meal]++;
                             }
-                        } else if (partySize > 1 && guest.mealBreakdown) {
-                            // Party - use meal breakdown
-                            Object.entries(guest.mealBreakdown).forEach(([meal, count]) => {
-                                if (mealCounts[meal] !== undefined) {
-                                    mealCounts[meal] += parseInt(count) || 0;
-                                }
-                            });
-                        }
+                        });
                     }
                 });
                 
@@ -1880,10 +2016,10 @@
             
             if (isHidden) {
                 content.style.display = 'block';
-                arrow.textContent = 'â–¼';
+                arrow.textContent = '▼';
             } else {
                 content.style.display = 'none';
-                arrow.textContent = 'â–¶';
+                arrow.textContent = '▶';
             }
         }
 
@@ -1975,22 +2111,22 @@
             
             if (userData.guests) {
                 userData.guests.forEach(guest => {
-                    const partySize = parseInt(guest.partySize) || 1;
-                    totalGuests += partySize;
-                    
-                    if (guest.rsvp === 'Yes') {
-                        attendingCeremony += partySize;
-                        attendingReception += partySize;
-                    } else if (guest.rsvp === 'Ceremony Only') {
-                        ceremonyOnly += partySize;
-                        attendingCeremony += partySize;
-                    } else if (guest.rsvp === 'Reception Only') {
-                        receptionOnly += partySize;
-                        attendingReception += partySize;
-                    } else if (guest.rsvp === 'No') {
-                        declined += partySize;
-                    } else {
-                        pending += partySize;
+                    // Count main guest
+                    totalGuests += 1;
+                    const countRsvp = (rsvp) => {
+                        if (rsvp === 'Yes') { attendingCeremony++; attendingReception++; }
+                        else if (rsvp === 'Ceremony Only') { ceremonyOnly++; attendingCeremony++; }
+                        else if (rsvp === 'Reception Only') { receptionOnly++; attendingReception++; }
+                        else if (rsvp === 'No') { declined++; }
+                        else { pending++; }
+                    };
+                    countRsvp(guest.rsvp || 'Pending');
+                    // Count each party member individually
+                    if (guest.partyMembers && guest.partyMembers.length > 0) {
+                        guest.partyMembers.forEach(member => {
+                            totalGuests += 1;
+                            countRsvp(member.rsvp || guest.rsvp || 'Pending');
+                        });
                     }
                 });
             }
@@ -2083,28 +2219,20 @@
                 guestsToDisplay = guestsToDisplay.filter(g => g.rsvp === 'No');
             }
             
-            // Separate guests with and without last names
-            const namedGuests = guestsToDisplay.filter(g => g.lastName && g.lastName.trim() !== '');
-            const unnamedGuests = guestsToDisplay.filter(g => !g.lastName || g.lastName.trim() === '');
-            
-            // Sort only the named guests alphabetically by last name, then first name
-            const sortedNamedGuests = namedGuests.sort((a, b) => {
-                const lastNameA = a.lastName.toLowerCase();
-                const lastNameB = b.lastName.toLowerCase();
-                
-                // If last names are different, sort by last name
-                if (lastNameA !== lastNameB) {
-                    return lastNameA.localeCompare(lastNameB);
-                }
-                
-                // If last names are the same, sort by first name
-                const firstNameA = (a.firstName || a.name || '').toLowerCase();
-                const firstNameB = (b.firstName || b.name || '').toLowerCase();
-                return firstNameA.localeCompare(firstNameB);
-            });
-            
-            // Combine: unnamed guests first (in original order), then sorted named guests
-            guestsToDisplay = [...unnamedGuests, ...sortedNamedGuests];
+            // Only sort when switching tabs (skipGuestSort flag is set during inline edits)
+            if (!window.skipGuestSort) {
+                const namedGuests = guestsToDisplay.filter(g => g.lastName && g.lastName.trim() !== '');
+                const unnamedGuests = guestsToDisplay.filter(g => !g.lastName || g.lastName.trim() === '');
+                const sortedNamedGuests = namedGuests.sort((a, b) => {
+                    const lastNameA = a.lastName.toLowerCase();
+                    const lastNameB = b.lastName.toLowerCase();
+                    if (lastNameA !== lastNameB) return lastNameA.localeCompare(lastNameB);
+                    const firstNameA = (a.firstName || a.name || '').toLowerCase();
+                    const firstNameB = (b.firstName || b.name || '').toLowerCase();
+                    return firstNameA.localeCompare(firstNameB);
+                });
+                guestsToDisplay = [...unnamedGuests, ...sortedNamedGuests];
+            }
             
             // Render guests as COLLAPSIBLE CARDS
             list.innerHTML = '';
@@ -2130,46 +2258,18 @@
                     const showMealSelection = guest.rsvp === 'Yes' || guest.rsvp === 'Reception Only' || guest.rsvp === 'Pending';
                     
                     if (showMealSelection) {
-                        // If party size is 1, show simple dropdown
-                        if (partySize === 1) {
-                            const hasMeal = guest.meal && guest.meal !== '';
-                            const warningStyle = !hasMeal ? 'color: #D4A5A5; font-weight: 600;' : 'color: #A8B89C;';
-                            mealSection = `
-                                <div><label style="font-size: 0.85rem; color: #666;">Meal Selection</label>
-                                <select onchange="updateGuest(${originalIndex}, 'meal', this.value)" class="input" style="padding: 10px;">
-                                    <option value="">Select meal</option>
-                                    ${userData.mealOptions ? userData.mealOptions.map(m => `<option ${guest.meal === m ? 'selected' : ''}>${m}</option>`).join('') : ''}
-                                </select>
-                                ${!hasMeal ? `<div style="font-size: 0.85rem; ${warningStyle} margin-top: 8px;">âš  Please select a meal</div>` : ''}
-                                </div>
-                            `;
-                        } else {
-                            // For parties > 1, show meal breakdown
-                            const mealBreakdownInputs = userData.mealOptions ? userData.mealOptions.map(meal => {
-                                const count = guest.mealBreakdown[meal] || 0;
-                                return `
-                                    <div style="display: flex; align-items: center; gap: 10px; background: #F8F6F3; padding: 8px 12px; border-radius: 4px; border: 2px solid #C9B8A8;">
-                                        <span style="flex: 1; font-size: 0.9rem;">${meal}</span>
-                                        <input type="number" min="0" max="${partySize}" value="${count}" 
-                                            onchange="updateMealBreakdown(${originalIndex}, '${meal}', this.value)" 
-                                            style="width: 60px; padding: 5px; border: 2px solid #C9B8A8; border-radius: 4px; text-align: center;">
-                                    </div>
-                                `;
-                            }).join('') : '';
-                            
-                            const totalMealsSelected = Object.values(guest.mealBreakdown || {}).reduce((sum, val) => sum + parseInt(val || 0), 0);
-                            const warningStyle = totalMealsSelected !== partySize ? 'color: #D4A5A5; font-weight: 600;' : 'color: #A8B89C;';
-                            
-                            mealSection = `
-                                <div style="grid-column: 1 / -1;">
-                                    <label style="font-size: 0.85rem; color: #666; margin-bottom: 8px; display: block;">Meal Breakdown for Party (${totalMealsSelected} of ${partySize} selected)</label>
-                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                                        ${mealBreakdownInputs}
-                                    </div>
-                                    ${totalMealsSelected !== partySize ? `<div style="font-size: 0.85rem; ${warningStyle} margin-top: 8px;">âš  Please select meals for all ${partySize} guests in this party</div>` : ''}
-                                </div>
-                            `;
-                        }
+                        // Always show simple meal dropdown for the host (party members have their own)
+                        const hasMeal = guest.meal && guest.meal !== '';
+                        const warningStyle = !hasMeal ? 'color: #D4A5A5; font-weight: 600;' : 'color: #A8B89C;';
+                        mealSection = `
+                            <div><label style="font-size: 0.85rem; color: #666;">Meal Selection</label>
+                            <select onchange="updateGuest(${originalIndex}, 'meal', this.value)" class="input" style="padding: 10px;">
+                                <option value="">Select meal</option>
+                                ${userData.mealOptions ? userData.mealOptions.map(m => `<option ${guest.meal === m ? 'selected' : ''}>${m}</option>`).join('') : ''}
+                            </select>
+                            ${!hasMeal ? `<div style="font-size: 0.85rem; ${warningStyle} margin-top: 8px;">⚠ Please select a meal</div>` : ''}
+                            </div>
+                        `;
                     }
                     
                     // Determine if guest is expanded (default to false for existing, true for new)
@@ -2180,12 +2280,12 @@
                     
                     // Add dietary indicator if guest has dietary restrictions
                     const hasDietary = guest.dietary && guest.dietary.trim() !== '';
-                    const dietaryIndicator = hasDietary ? ' <span style="color: #A8B89C; font-size: 1rem;" title="Has dietary restrictions">ðŸŒ±</span>' : '';
+                    const dietaryIndicator = hasDietary ? ' <span style="color: #A8B89C; font-size: 1rem;" title="Has dietary restrictions">🌱</span>' : '';
                     
                     card.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleGuest(${originalIndex})">
                             <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
-                                <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                                <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? '▼' : '▶'}</span>
                                 <h3 style="margin: 0; color: #D4A5A5;">${displayName}${dietaryIndicator}</h3>
                                 <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${guest.rsvp || 'Pending'}</span>
                             </div>
@@ -2198,8 +2298,6 @@
                                 <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Email</label><input type="email" value="${guest.email || ''}" onchange="updateGuest(${originalIndex}, 'email', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
                                 <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Phone Number</label><input type="tel" value="${guest.phone || ''}" onchange="updateGuest(${originalIndex}, 'phone', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
                                 <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Address</label><input type="text" value="${guest.address || ''}" onchange="updateGuest(${originalIndex}, 'address', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
-                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Dietary Restrictions</label><input type="text" value="${guest.dietary || ''}" onchange="updateGuest(${originalIndex}, 'dietary', this.value)" class="input" placeholder="e.g., Vegetarian, Gluten-free" style="padding: 10px; text-align: left;"></div>
-                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Party Size</label><input type="number" min="1" value="${guest.partySize || 1}" onchange="updateGuest(${originalIndex}, 'partySize', this.value)" class="input" style="padding: 10px; text-align: left;"></div>
                                 <div><label style="font-size: 0.85rem; color: #666; text-align: left;">RSVP Status</label><select onchange="updateGuest(${originalIndex}, 'rsvp', this.value)" class="input" style="padding: 10px; text-align: left;">
                                     <option value="Pending" ${guest.rsvp === 'Pending' ? 'selected' : ''}>Pending</option>
                                     <option value="Yes" ${guest.rsvp === 'Yes' ? 'selected' : ''}>Ceremony & Reception</option>
@@ -2208,8 +2306,64 @@
                                     <option value="No" ${guest.rsvp === 'No' ? 'selected' : ''}>Not Attending</option>
                                 </select></div>
                                 ${mealSection}
+                                <div><label style="font-size: 0.85rem; color: #666; text-align: left;">Dietary Restrictions</label><input type="text" value="${guest.dietary || ''}" onchange="updateGuest(${originalIndex}, 'dietary', this.value)" class="input" placeholder="e.g., Vegetarian, Gluten-free" style="padding: 10px; text-align: left;"></div>
                             </div>
-                            <div style="margin-top: 15px;"><label style="font-size: 0.85rem; color: #666; text-align: left;">Notes</label><textarea onchange="updateGuest(${originalIndex}, 'notes', this.value)" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; min-height: 60px; font-family: 'Montserrat', sans-serif; text-align: left;">${guest.notes || ''}</textarea></div>
+
+                            <!-- PARTY MEMBERS SECTION -->
+                            <div style="margin-top: 5px; border-top: 2px solid #F8F6F3; padding-top: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                    <label style="font-size: 0.9rem; color: #5A5A5A; font-weight: 600;">Party Members ${guest.partyMembers && guest.partyMembers.length > 0 ? '(' + guest.partyMembers.length + ')' : ''}</label>
+                                    <button onclick="event.stopPropagation(); addPartyMember(${originalIndex})" style="background: #A8B89C; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600;">+ Add Party Member</button>
+                                </div>
+                                ${(guest.partyMembers && guest.partyMembers.length > 0) ? guest.partyMembers.map((member, mi) => `
+                                    <div style="background: #F8F6F3; padding: 14px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #E0D8D0;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                            <span style="font-size: 0.85rem; color: #A8B89C; font-weight: 600;">Guest ${mi + 1}${member.name ? ' — ' + member.name : ''}</span>
+                                            <button onclick="event.stopPropagation(); deletePartyMember(${originalIndex}, ${mi})" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.8rem; padding: 0;">Remove</button>
+                                        </div>
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                            <div>
+                                                <label style="font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px;">Name <span style="color:#bbb;">(optional)</span></label>
+                                                <input type="text" value="${member.name || ''}"
+                                                    onchange="updatePartyMember(${originalIndex}, ${mi}, 'name', this.value)"
+                                                    placeholder="First name"
+                                                    class="input" style="padding: 8px; text-align: left; font-size: 0.9rem;">
+                                            </div>
+                                            <div>
+                                                <label style="font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px;">RSVP Status</label>
+                                                <select onchange="updatePartyMember(${originalIndex}, ${mi}, 'rsvp', this.value)" class="input" style="padding: 8px; text-align: left; font-size: 0.9rem;">
+                                                    <option value="Pending" ${(member.rsvp || 'Pending') === 'Pending' ? 'selected' : ''}>Pending</option>
+                                                    <option value="Yes" ${member.rsvp === 'Yes' ? 'selected' : ''}>Ceremony & Reception</option>
+                                                    <option value="Ceremony Only" ${member.rsvp === 'Ceremony Only' ? 'selected' : ''}>Ceremony Only</option>
+                                                    <option value="Reception Only" ${member.rsvp === 'Reception Only' ? 'selected' : ''}>Reception Only</option>
+                                                    <option value="No" ${member.rsvp === 'No' ? 'selected' : ''}>Not Attending</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label style="font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px;">Meal Choice</label>
+                                                <select onchange="updatePartyMember(${originalIndex}, ${mi}, 'meal', this.value)" class="input" style="padding: 8px; text-align: left; font-size: 0.9rem;">
+                                                    <option value="">Select meal</option>
+                                                    ${userData.mealOptions ? userData.mealOptions.map(m => `<option value="${m}" ${member.meal === m ? 'selected' : ''}>${m}</option>`).join('') : ''}
+                                                </select>
+                                                ${!member.meal ? '<div style="font-size: 0.8rem; color: #D4A5A5; font-weight: 600; margin-top: 4px;">⚠ Please select a meal</div>' : ''}
+                                            </div>
+                                            <div>
+                                                <label style="font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px;">Dietary Restrictions</label>
+                                                <input type="text" value="${member.dietary || ''}"
+                                                    onchange="updatePartyMember(${originalIndex}, ${mi}, 'dietary', this.value)"
+                                                    placeholder="e.g., Vegetarian"
+                                                    class="input" style="padding: 8px; text-align: left; font-size: 0.9rem;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('') : '<div style="font-size: 0.85rem; color: #999; font-style: italic; margin-bottom: 12px;">No party members yet.</div>'}
+                            </div>
+
+                            <!-- NOTES always at the bottom -->
+                            <div style="margin-top: 15px; border-top: 2px solid #F8F6F3; padding-top: 15px;">
+                                <label style="font-size: 0.85rem; color: #666; text-align: left;">Notes</label>
+                                <textarea onchange="updateGuest(${originalIndex}, 'notes', this.value)" style="width: 100%; padding: 10px; border: 2px solid #C9B8A8; border-radius: 4px; min-height: 60px; font-family: 'Montserrat', sans-serif; text-align: left;">${guest.notes || ''}</textarea>
+                            </div>
                         </div>
                     `;
                     
@@ -2323,7 +2477,7 @@
                 div.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleVendor(${index})">
                         <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
-                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? '▼' : '▶'}</span>
                             <h3 style="margin: 0; color: #D4A5A5;">${companyDisplay}</h3>
                             <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${categoryDisplay}</span>
                         </div>
@@ -2422,20 +2576,53 @@
             
             // If assigning a guest (not clearing), check party size and if they're already seated
             if (value) {
+                // Check if this is a party member seat (format: "Host Name - Member Name")
+                let effectiveRsvp = null;
+                const partyMemberMatch = value.match(/^(.+) - (.+)$/);
+                if (partyMemberMatch) {
+                    const hostName = partyMemberMatch[1];
+                    const memberName = partyMemberMatch[2];
+                    const hostGuest = userData.guests.find(g => {
+                        const n = g.firstName || g.lastName ? `${g.firstName || ''} ${g.lastName || ''}`.trim() : g.name || '';
+                        return n === hostName;
+                    });
+                    if (hostGuest && hostGuest.partyMembers) {
+                        const member = hostGuest.partyMembers.find(m => m.name === memberName);
+                        if (member) effectiveRsvp = member.rsvp || hostGuest.rsvp || 'Pending';
+                    }
+                }
+
                 const selectedGuest = userData.guests.find(g => 
                     (g.firstName && g.lastName ? `${g.firstName} ${g.lastName}` : g.name) === value
                 );
                 
-                if (selectedGuest) {
-                    // Check RSVP status - only allow "Yes" (Ceremony & Reception) or "Reception Only"
-                    if (selectedGuest.rsvp !== 'Yes' && selectedGuest.rsvp !== 'Reception Only') {
-                        const rsvpText = selectedGuest.rsvp === 'Ceremony Only' ? 'Ceremony Only' : 
-                                        selectedGuest.rsvp === 'No' ? 'Not Attending' : 
-                                        'Pending';
-                        alert(`${value} cannot be seated at the reception. Their RSVP status is "${rsvpText}". Only guests attending the reception can be assigned seats.`);
-                        renderSeating(); // Reset the dropdown to previous value
+                // Block if Ceremony Only or Not Attending
+                const rsvpToCheck = effectiveRsvp || (selectedGuest ? selectedGuest.rsvp : null);
+                if (rsvpToCheck === 'Ceremony Only' || rsvpToCheck === 'No') {
+                    const rsvpText = rsvpToCheck === 'Ceremony Only' ? 'Ceremony Only' : 'Not Attending';
+                    alert(`${value} cannot be seated at the reception. Their RSVP status is "${rsvpText}"`);
+                    renderSeating();
+                    return;
+                }
+
+                // Check for duplicate seat for party members (selectedGuest will be null for them)
+                if (!selectedGuest) {
+                    let alreadySeated = false;
+                    userData.tables.forEach((t, tIdx) => {
+                        t.guests.forEach((guestName, gIdx) => {
+                            if (!(tIdx === tableIndex && gIdx === guestIndex) && guestName === value) {
+                                alreadySeated = true;
+                            }
+                        });
+                    });
+                    if (alreadySeated) {
+                        alert(`${value} is already seated.`);
+                        renderSeating();
                         return;
                     }
+                }
+
+                if (selectedGuest) {
                     
                     const partySize = parseInt(selectedGuest.partySize) || 1;
                     
@@ -2450,30 +2637,22 @@
                     console.log(`Party size: ${partySize}`);
                     console.log(`RSVP: ${selectedGuest.rsvp}`);
                     
-                    // Count how many times this guest is already seated across ALL tables
-                    let timesAlreadySeated = 0;
+                    // Each person gets exactly one seat - check across all tables
+                    let alreadySeated = false;
                     userData.tables.forEach((t, tIdx) => {
                         t.guests.forEach((guestName, gIdx) => {
                             // Don't count the slot we're currently updating
                             if (!(tIdx === tableIndex && gIdx === guestIndex) && guestName === value) {
-                                timesAlreadySeated++;
-                                console.log(`Found ${value} at table ${t.number}, slot ${gIdx}`);
+                                alreadySeated = true;
                             }
                         });
                     });
                     
-                    console.log(`Times already seated: ${timesAlreadySeated}`);
-                    console.log(`Will be blocked if: ${timesAlreadySeated} >= ${partySize}`);
-                    
-                    // Check if this guest has already been seated the maximum number of times
-                    // If they have party of 3, they can be seated 3 times total (timesAlreadySeated should stay < 3)
-                    if (timesAlreadySeated >= partySize) {
-                        console.log(`BLOCKING: Guest has reached seating limit`);
-                        alert(`${value} has a party size of ${partySize} and all ${partySize} members have already been seated (${timesAlreadySeated} seat(s) currently assigned).`);
-                        renderSeating(); // Reset the dropdown to previous value
+                    if (alreadySeated) {
+                        alert(`${value} is already seated.`);
+                        renderSeating();
                         return;
                     }
-                    console.log(`ALLOWING: Guest has not reached seating limit yet`);
                     
                     // Count current total slots filled at this specific table (excluding empty slots and the slot being updated)
                     let currentCount = 0;
@@ -2561,23 +2740,51 @@
                 const filledSeats = table.guests.filter(g => g).length;
                 
                 // Only show guests attending reception (Yes or Reception Only)
-                const seatingEligibleGuests = userData.guests && userData.guests.length > 0 
-                    ? userData.guests.filter(g => g.rsvp === 'Yes' || g.rsvp === 'Reception Only')
-                    : [];
-                
-                const guestOptions = seatingEligibleGuests.length > 0
-                    ? seatingEligibleGuests.map(g => {
-                        const displayName = g.firstName || g.lastName 
-                            ? `${g.firstName || ''} ${g.lastName || ''}`.trim() 
+                // Build full seating list: main guests + their party members
+                const seatingOptions = [];
+                if (userData.guests && userData.guests.length > 0) {
+                    userData.guests.forEach(g => {
+                        const hostName = g.firstName || g.lastName
+                            ? `${g.firstName || ''} ${g.lastName || ''}`.trim()
                             : g.name || 'Unnamed';
-                        return `<option value="${displayName}">${displayName}</option>`;
-                    }).join('')
-                    : '<option value="">No reception guests added yet</option>';
+                        // Add main guest if eligible
+                        if (g.rsvp === 'Yes' || g.rsvp === 'Reception Only' || g.rsvp === 'Pending') {
+                            const pendingLabel = g.rsvp === 'Pending' ? ' (Pending)' : '';
+                            seatingOptions.push({ label: hostName + pendingLabel, value: hostName });
+                        }
+                        // Add party members if eligible
+                        if (g.partyMembers && g.partyMembers.length > 0) {
+                            g.partyMembers.forEach((member, mi) => {
+                                const memberRsvp = member.rsvp || 'Pending';
+                                if (memberRsvp === 'Yes' || memberRsvp === 'Reception Only' || memberRsvp === 'Pending') {
+                                    const memberName = member.name && member.name.trim() ? member.name.trim() : `Guest ${mi + 1}`;
+                                    const seatLabel = `${hostName} - ${memberName}`;
+                                    const pendingLabel = memberRsvp === 'Pending' ? ' (Pending)' : '';
+                                    seatingOptions.push({ label: seatLabel + pendingLabel, value: seatLabel });
+                                }
+                            });
+                        }
+                    });
+                }
+                
+                // Build set of all already-seated guest names
+                const allSeatedNames = new Set();
+                if (userData.tables) {
+                    userData.tables.forEach(t => {
+                        t.guests.forEach(g => { if (g) allSeatedNames.add(g); });
+                    });
+                }
+
+                // Filter out already-seated guests for the "add" dropdown
+                const availableOptions = seatingOptions.filter(o => !allSeatedNames.has(o.value));
+                const guestOptions = availableOptions.length > 0
+                    ? availableOptions.map(o => `<option value="${o.value}">${o.label}</option>`).join('')
+                    : '<option value="">All guests have been seated</option>';
                 
                 div.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; cursor: pointer;" onclick="toggleTable(${tableIndex})">
                         <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
-                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                            <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? '▼' : '▶'}</span>
                             <h3 style="margin: 0; color: #D4A5A5;">Table ${table.number}</h3>
                             <span style="font-size: 0.85rem; color: #666; margin-left: 10px;">${filledSeats} of ${table.seats} seats</span>
                         </div>
@@ -2603,22 +2810,20 @@
                     const guestDiv = document.createElement('div');
                     guestDiv.style.cssText = 'display: flex; gap: 8px; margin-bottom: 8px;';
                     
-                    // Build options with selected state - only show reception attendees
-                    const optionsWithSelected = seatingEligibleGuests.length > 0
-                        ? seatingEligibleGuests.map(g => {
-                            const displayName = g.firstName || g.lastName 
-                                ? `${g.firstName || ''} ${g.lastName || ''}`.trim() 
-                                : g.name || 'Unnamed';
-                            return `<option value="${displayName}" ${displayName === guestName ? 'selected' : ''}>${displayName}</option>`;
-                        }).join('')
+                    // Build options: unseated guests + whoever is currently in THIS slot
+                    const optionsWithSelected = seatingOptions.length > 0
+                        ? seatingOptions
+                            .filter(o => !allSeatedNames.has(o.value) || o.value === guestName)
+                            .map(o => `<option value="${o.value}" ${o.value === guestName ? 'selected' : ''}>${o.label}</option>`)
+                            .join('')
                         : '<option value="">No guests added yet</option>';
                     
                     guestDiv.innerHTML = `
-                        <select onchange="updateTableGuest(${tableIndex}, ${guestIndex}, this.value)" style="flex: 1; padding: 8px; background: white; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #5A5A5A; text-align: left;">
+                        <select onchange="updateTableGuest(${tableIndex}, ${guestIndex}, this.value)" style="flex: 1; min-width: 0; padding: 8px; background: white; border: 2px solid #C9B8A8; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #5A5A5A; text-align: left;">
                             <option value="">Select a guest</option>
                             ${optionsWithSelected}
                         </select>
-                        <button onclick="removeGuestFromTable(${tableIndex}, ${guestIndex})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
+                        <button onclick="removeGuestFromTable(${tableIndex}, ${guestIndex})" style="flex-shrink: 0; color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0 4px; white-space: nowrap;">Remove</button>
                     `;
                     guestListDiv.appendChild(guestDiv);
                 });
@@ -2735,7 +2940,7 @@
                 header.onclick = () => toggleChecklistPeriod(period);
                 header.innerHTML = `
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? 'â–¼' : 'â–¶'}</span>
+                        <span style="color: #5A5A5A; font-size: 1.2rem;">${isExpanded ? '▼' : '▶'}</span>
                         <h3 style="margin: 0;">${period}</h3>
                     </div>
                     <span style="font-size: 0.9rem; color: #666;">${periodCompleted} of ${tasks.length} completed</span>
@@ -2753,8 +2958,8 @@
                     const taskDiv = document.createElement('div');
                     taskDiv.className = 'task' + (task.completed ? ' done' : '');
                     taskDiv.innerHTML = `
-                        <div class="checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${globalIndex})">${task.completed ? 'âœ“' : ''}</div>
-                        <span onclick="toggleTask(${globalIndex})" style="flex: 1; color: #5A5A5A; cursor: pointer;">${task.task}</span>
+                        <div class="checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${globalIndex})">${task.completed ? '✓' : ''}</div>
+                        <span onclick="toggleTask(${globalIndex})" style="flex: 1; color: ${task.completed ? '#999' : '#5A5A5A'}; cursor: pointer;">${task.task}</span>
                         <button onclick="deleteTask(${globalIndex})" class="delete-btn" style="color: #D4A5A5; text-decoration: underline; background: transparent; border: none; cursor: pointer; font-size: 0.85rem; padding: 0;">Delete</button>
                     `;
                     tasksContainer.appendChild(taskDiv);
@@ -2772,54 +2977,146 @@
             });
         }
 
+        function printChecklist() {
+            if (!userData.tasks || userData.tasks.length === 0) {
+                alert('No checklist to print. Please add tasks first.');
+                return;
+            }
+
+            // Group tasks by period
+            const groupedTasks = {};
+            userData.tasks.forEach(task => {
+                if (!groupedTasks[task.period]) groupedTasks[task.period] = [];
+                groupedTasks[task.period].push(task);
+            });
+
+            const completedCount = userData.tasks.filter(t => t.completed).length;
+            const totalCount = userData.tasks.length;
+            const percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+            const brideName = userData.bride ? userData.bride : '';
+            const partnerName = userData.partner ? userData.partner : '';
+            const nameDisplay = brideName || partnerName
+                ? `${brideName}${brideName && partnerName ? ' & ' : ''}${partnerName}`
+                : 'My Wedding';
+            const dateDisplay = userData.weddingDate
+                ? new Date(userData.weddingDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+                : '';
+
+            let periodsHTML = '';
+            Object.entries(groupedTasks).forEach(([period, tasks]) => {
+                const periodDone = tasks.filter(t => t.completed).length;
+                const tasksHTML = tasks.map(task => `
+                    <div style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #F0EDE8;">
+                        <div style="width: 18px; height: 18px; border: 2px solid ${task.completed ? '#A8B89C' : '#C9B8A8'}; border-radius: 3px; flex-shrink: 0; margin-top: 1px; background: ${task.completed ? '#A8B89C' : 'white'}; display: flex; align-items: center; justify-content: center;">
+                            ${task.completed ? '<span style="color:white; font-size:12px; font-weight:bold;">✓</span>' : ''}
+                        </div>
+                        <span style="color: ${task.completed ? '#999' : '#5A5A5A'}; font-size: 0.95rem; line-height: 1.4;">${task.task}</span>
+                    </div>
+                `).join('');
+
+                periodsHTML += `
+                    <div style="border: 2px solid #C9B8A8; border-radius: 8px; padding: 18px; margin-bottom: 20px; page-break-inside: avoid;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid #F0EDE8;">
+                            <h3 style="margin: 0; color: #5A5A5A; font-size: 1.1rem;">${period}</h3>
+                            <span style="font-size: 0.85rem; color: #999;">${periodDone} of ${tasks.length} done</span>
+                        </div>
+                        ${tasksHTML}
+                    </div>
+                `;
+            });
+
+            const printContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Wedding Planning Checklist</title>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;600&display=swap');
+                        body { font-family: 'Montserrat', Arial, sans-serif; max-width: 750px; margin: 0 auto; padding: 30px 20px; color: #5A5A5A; }
+                        h1 { font-family: 'Cormorant Garamond', serif; color: #D4A5A5; text-align: center; font-size: 2.2rem; margin-bottom: 4px; }
+                        .subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 6px; }
+                        .progress-summary { text-align: center; font-size: 0.9rem; color: #A8B89C; font-weight: 600; margin-bottom: 25px; }
+                        .progress-bar-wrap { background: #F0EDE8; border-radius: 6px; height: 8px; margin: 8px auto 25px; max-width: 400px; }
+                        .progress-bar-fill { background: #A8B89C; height: 8px; border-radius: 6px; width: ${percent}%; }
+                        .print-btn { background: #D4A5A5; color: white; border: none; padding: 10px 24px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; display: block; margin: 0 auto 25px; font-family: 'Montserrat', Arial, sans-serif; }
+                        .footer { text-align: center; color: #C9B8A8; font-size: 0.8rem; margin-top: 30px; padding-top: 15px; border-top: 1px solid #F0EDE8; }
+                        @media print { .print-btn { display: none; } body { padding: 15px; } }
+                    </style>
+                </head>
+                <body>
+                    <button class="print-btn" onclick="window.print()">🖨️ Print This Page</button>
+                    <h1>${nameDisplay}</h1>
+                    ${dateDisplay ? `<div class="subtitle">${dateDisplay}</div>` : ''}
+                    <div class="progress-summary">${completedCount} of ${totalCount} tasks completed — ${percent}%</div>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+                    ${periodsHTML}
+                    <div class="footer">Created with the Free Wedding Planner by Elegant Bride Co. · elegantbrideco.com</div>
+                </body>
+                </html>
+            `;
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+
         // EXPORT GUEST LIST FUNCTION
         function exportGuestList() {
             if (!userData.guests || userData.guests.length === 0) {
                 alert('No guests to export. Please add guests first.');
                 return;
             }
-            
-            // Create CSV content
-            let csvContent = "First Name,Last Name,Email,Phone,Address,Dietary Restrictions,Party Size,RSVP Status,Meal Selection,Notes\n";
-            
+
+            const esc = val => (val || '').replace(/"/g, '""').replace(/\n/g, ' ');
+
+            // Header row - added Party Of column
+            let csvContent = "First Name,Last Name,Email,Phone,Address,Dietary Restrictions,RSVP Status,Meal Selection,Party Of,Notes\n";
+
             userData.guests.forEach(guest => {
-                const firstName = (guest.firstName || '').replace(/,/g, ';');
-                const lastName = (guest.lastName || '').replace(/,/g, ';');
-                const email = (guest.email || '').replace(/,/g, ';');
-                const phone = (guest.phone || '').replace(/,/g, ';');
-                const address = (guest.address || '').replace(/,/g, ';');
-                const dietary = (guest.dietary || '').replace(/,/g, ';');
-                const partySize = guest.partySize || 1;
-                const rsvp = (guest.rsvp || 'Pending').replace(/,/g, ';');
-                
-                // Handle meal selection
-                let meal = '';
-                if (partySize === 1) {
-                    meal = (guest.meal || '').replace(/,/g, ';');
-                } else if (guest.mealBreakdown) {
-                    const mealParts = [];
-                    Object.entries(guest.mealBreakdown).forEach(([mealType, count]) => {
-                        if (count > 0) {
-                            mealParts.push(`${mealType}: ${count}`);
-                        }
+                const hostFirstName = guest.firstName || '';
+                const hostLastName = guest.lastName || guest.name || '';
+                const hostFullName = `${hostFirstName} ${hostLastName}`.trim() || 'Unnamed';
+
+                // ── Host row ──────────────────────────────────────────────────
+                csvContent += [
+                    `"${esc(hostFirstName)}"`,
+                    `"${esc(hostLastName)}"`,
+                    `"${esc(guest.email)}"`,
+                    `"${esc(guest.phone)}"`,
+                    `"${esc(guest.address)}"`,
+                    `"${esc(guest.dietary)}"`,
+                    `"${esc(guest.rsvp || 'Pending')}"`,
+                    `"${esc(guest.meal)}"`,
+                    `"Primary"`,
+                    `"${esc(guest.notes)}"`
+                ].join(',') + '\n';
+
+                // ── Party member rows ─────────────────────────────────────────
+                if (guest.partyMembers && guest.partyMembers.length > 0) {
+                    guest.partyMembers.forEach((member, mi) => {
+                        const memberName = (member.name && member.name.trim()) ? member.name.trim() : `Guest ${mi + 1}`;
+                        csvContent += [
+                            `"${esc(memberName)}"`,
+                            `""`,
+                            `""`,
+                            `""`,
+                            `""`,
+                            `"${esc(member.dietary)}"`,
+                            `"${esc(member.rsvp || 'Pending')}"`,
+                            `"${esc(member.meal)}"`,
+                            `"${esc(hostFullName)}"`,
+                            `""`
+                        ].join(',') + '\n';
                     });
-                    meal = mealParts.join('; ');
                 }
-                
-                const notes = (guest.notes || '').replace(/,/g, ';').replace(/\n/g, ' ');
-                
-                csvContent += `"${firstName}","${lastName}","${email}","${phone}","${address}","${dietary}","${partySize}","${rsvp}","${meal}","${notes}"\n`;
             });
-            
+
             // Create download link
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            
-            link.setAttribute('href', url);
+            link.setAttribute('href', URL.createObjectURL(blob));
             link.setAttribute('download', 'wedding_guest_list.csv');
             link.style.display = 'none';
-            
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -2851,13 +3148,13 @@
                         .table-capacity { font-size: 0.9rem; color: #666; }
                         .guest-list { padding-left: 0; }
                         .guest-item { padding: 5px 0; color: #5A5A5A; list-style: none; }
-                        .guest-item:before { content: "â€¢ "; color: #D4A5A5; font-weight: bold; }
+                        .guest-item:before { content: "• "; color: #D4A5A5; font-weight: bold; }
                         .print-btn { background: #D4A5A5; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 20px; }
-                        .print-btn:hover { background: #C9B8A8; }
+                        .print-btn:hover { background: #E8DDD6; }
                     </style>
                 </head>
                 <body>
-                    <button class="print-btn no-print" onclick="window.print()">ðŸ–¨ï¸ Print This Page</button>
+                    <button class="print-btn no-print" onclick="window.print()">🖨️ Print This Page</button>
                     <h1>Wedding Seating Chart</h1>
             `;
             
@@ -2930,6 +3227,10 @@
         window.toggleMealOptions = toggleMealOptions;
         window.exportGuestList = exportGuestList;
         window.printSeatingChart = printSeatingChart;
+        window.printChecklist = printChecklist;
+        window.addPartyMember = addPartyMember;
+        window.updatePartyMember = updatePartyMember;
+        window.deletePartyMember = deletePartyMember;
 
 
         function showTab(tabName) {
