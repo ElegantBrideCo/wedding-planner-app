@@ -912,55 +912,41 @@ ${registrySection}
   <div style="font-size:0.72rem;opacity:0.25;letter-spacing:0.08em;">Website created with <a href="https://www.elegantbrideco.com" target="_blank" style="color:white;">Elegant Bride Co.</a></div>
 </footer>
 
-
-<script>
-// ── EDIT MODE ────────────────────────────────────────────────────────────────
+<scr'+'ipt>
+// EDIT MODE - injected by Elegant Bride Co. generator
 (function() {
-  let editMode = false;
+  var editMode = false;
 
-  // Inject the floating edit button
-  const editBtn = document.createElement('div');
+  var editBtn = document.createElement('div');
   editBtn.id = 'editModeBtn';
-  editBtn.innerHTML = '✏️ Edit Website';
+  editBtn.innerHTML = '\u270F\uFE0F Edit Website';
   editBtn.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;background:#fff;border:2px solid #ccc;border-radius:30px;padding:10px 20px;font-size:0.85rem;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.12);transition:all 0.2s;font-family:sans-serif;';
-  editBtn.onclick = toggleEditMode;
+  editBtn.onclick = function(){ toggleEditMode(); };
   document.body.appendChild(editBtn);
 
-  // Inject save bar (hidden initially)
-  const saveBar = document.createElement('div');
+  var saveBar = document.createElement('div');
   saveBar.id = 'editSaveBar';
   saveBar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:10000;background:#4A4540;color:white;padding:12px 24px;display:none;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:0.85rem;box-shadow:0 2px 10px rgba(0,0,0,0.2);';
-  saveBar.innerHTML = '<span>✏️ Edit Mode — click any text to edit, hover photos to replace</span><div style="display:flex;gap:10px;"><button onclick="saveAndDownload()" style="background:#A8B89C;color:white;border:none;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85rem;">💾 Save & Download</button><button onclick="toggleEditMode()" style="background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:20px;cursor:pointer;font-size:0.85rem;">Cancel</button></div>';
+  saveBar.innerHTML = '<span>\u270F\uFE0F Edit Mode \u2014 click any text to edit, hover photos to replace</span><div style="display:flex;gap:10px;"><button onclick="saveAndDownload()" style="background:#A8B89C;color:white;border:none;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85rem;">\uD83D\uDCBE Save & Download</button><button onclick="toggleEditMode()" style="background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:20px;cursor:pointer;font-size:0.85rem;">Cancel</button></div>';
   document.body.appendChild(saveBar);
 
-  // Inject styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .eb-editable { outline:2px dashed #D4A5A5 !important; outline-offset:2px; cursor:text !important; border-radius:4px; }
-    .eb-editable:hover { background:rgba(212,165,165,0.08) !important; }
-    .eb-editable:focus { outline:2px solid #D4A5A5 !important; background:rgba(212,165,165,0.06) !important; }
-    .eb-photo-wrap { position:relative !important; }
-    .eb-photo-btn { position:absolute !important; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.45); color:white; font-size:0.8rem; font-weight:600; font-family:sans-serif; opacity:0; transition:opacity 0.2s; cursor:pointer; border-radius:inherit; z-index:10; }
-    .eb-photo-wrap:hover .eb-photo-btn { opacity:1 !important; }
-    .eb-add-btn { display:block; width:100%; padding:10px; margin-top:12px; background:white; border:2px dashed #ccc; border-radius:8px; cursor:pointer; color:#D4A5A5; font-weight:600; font-family:sans-serif; font-size:0.85rem; }
-    .eb-add-btn:hover { border-color:#D4A5A5; }
-    .eb-delete-btn { display:inline-block; margin-left:8px; color:#D4A5A5; background:none; border:none; cursor:pointer; font-size:0.8rem; font-family:sans-serif; text-decoration:underline; }
-  `;
+  var style = document.createElement('style');
+  style.textContent = '.eb-editable{outline:2px dashed #D4A5A5 !important;outline-offset:2px;cursor:text !important;border-radius:4px;}.eb-editable:hover{background:rgba(212,165,165,0.08) !important;}.eb-editable:focus{outline:2px solid #D4A5A5 !important;background:rgba(212,165,165,0.06) !important;}.eb-photo-wrap{position:relative !important;}.eb-photo-btn{position:absolute !important;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);color:white;font-size:0.8rem;font-weight:600;font-family:sans-serif;opacity:0;transition:opacity 0.2s;cursor:pointer;border-radius:inherit;z-index:10;}.eb-photo-wrap:hover .eb-photo-btn{opacity:1 !important;}.eb-delete-btn{display:inline-block;margin-left:8px;color:#D4A5A5;background:none;border:none;cursor:pointer;font-size:0.8rem;font-family:sans-serif;text-decoration:underline;vertical-align:middle;}';
   document.head.appendChild(style);
 
   function toggleEditMode() {
     editMode = !editMode;
-    const bar = document.getElementById('editSaveBar');
-    const btn = document.getElementById('editModeBtn');
+    var bar = document.getElementById('editSaveBar');
+    var btn = document.getElementById('editModeBtn');
     if (editMode) {
       bar.style.display = 'flex';
-      btn.innerHTML = '✕ Exit Edit Mode';
+      btn.innerHTML = '\u2715 Exit Edit Mode';
       btn.style.background = '#fef0f0';
       btn.style.borderColor = '#D4A5A5';
       enableEditing();
     } else {
       bar.style.display = 'none';
-      btn.innerHTML = '✏️ Edit Website';
+      btn.innerHTML = '\u270F\uFE0F Edit Website';
       btn.style.background = '#fff';
       btn.style.borderColor = '#ccc';
       disableEditing();
@@ -968,81 +954,56 @@ ${registrySection}
   }
 
   function enableEditing() {
-    // Make text fields editable
-    const editableSelectors = [
-      'h1','h2','h3','h4',
-      'p:not([data-noedit])',
-      '[data-editable]',
-    ];
-    // Target specific content elements
-    document.querySelectorAll('[data-edit]').forEach(el => {
+    document.querySelectorAll('.eb-text').forEach(function(el) {
       el.contentEditable = 'true';
       el.classList.add('eb-editable');
     });
-
-    // Make all schedule items, hotel items editable
-    document.querySelectorAll('.eb-text').forEach(el => {
-      el.contentEditable = 'true';
-      el.classList.add('eb-editable');
-    });
-
-    // Make photos replaceable
-    document.querySelectorAll('.eb-photo').forEach(img => {
-      const wrap = img.parentElement;
+    document.querySelectorAll('.eb-photo').forEach(function(img) {
+      var wrap = img.parentElement;
       wrap.classList.add('eb-photo-wrap');
       if (!wrap.querySelector('.eb-photo-btn')) {
-        const btn = document.createElement('div');
+        var btn = document.createElement('div');
         btn.className = 'eb-photo-btn';
-        btn.textContent = '🖼 Replace Photo';
-        btn.onclick = () => triggerPhotoReplace(img);
+        btn.textContent = '\uD83D\uDDBC Replace Photo';
+        btn.onclick = (function(i){ return function(){ triggerPhotoReplace(i); }; })(img);
         wrap.appendChild(btn);
       }
     });
-
-    // Show add/delete buttons for schedule and hotels
-    document.querySelectorAll('.eb-deletable').forEach(el => {
+    document.querySelectorAll('.eb-deletable').forEach(function(el) {
       if (!el.querySelector('.eb-delete-btn')) {
-        const del = document.createElement('button');
+        var del = document.createElement('button');
         del.className = 'eb-delete-btn';
-        del.textContent = '✕ Remove';
-        del.onclick = () => { el.remove(); };
+        del.textContent = '\u2715 Remove';
+        del.onclick = (function(e){ return function(ev){ ev.stopPropagation(); e.remove(); }; })(el);
         el.appendChild(del);
       }
-    });
-
-    document.querySelectorAll('.eb-add-section').forEach(section => {
-      section.style.display = 'block';
     });
   }
 
   function disableEditing() {
-    document.querySelectorAll('.eb-text, [data-edit]').forEach(el => {
+    document.querySelectorAll('.eb-text').forEach(function(el) {
       el.contentEditable = 'false';
       el.classList.remove('eb-editable');
     });
-    document.querySelectorAll('.eb-photo-btn').forEach(btn => btn.remove());
-    document.querySelectorAll('.eb-photo-wrap').forEach(el => el.classList.remove('eb-photo-wrap'));
-    document.querySelectorAll('.eb-delete-btn').forEach(btn => btn.remove());
-    document.querySelectorAll('.eb-add-section').forEach(section => {
-      section.style.display = 'none';
-    });
+    document.querySelectorAll('.eb-photo-btn').forEach(function(btn){ btn.remove(); });
+    document.querySelectorAll('.eb-photo-wrap').forEach(function(el){ el.classList.remove('eb-photo-wrap'); });
+    document.querySelectorAll('.eb-delete-btn').forEach(function(btn){ btn.remove(); });
   }
 
   function triggerPhotoReplace(imgEl) {
-    const input = document.createElement('input');
+    var input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    input.onchange = (e) => {
-      const file = e.target.files[0];
+    input.onchange = function(e) {
+      var file = e.target.files[0];
       if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          // Preserve aspect ratio, max 1400px wide
-          const MAX = 1400;
-          let w = img.width, h = img.height;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        var img = new Image();
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          var MAX = 1400;
+          var w = img.width, h = img.height;
           if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
           canvas.width = w; canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
@@ -1056,39 +1017,31 @@ ${registrySection}
   }
 
   window.saveAndDownload = function() {
-    // Disable editing first to clean up UI
     disableEditing();
     editMode = false;
-
-    // Clone the document
-    const clone = document.documentElement.cloneNode(true);
-
-    // Remove edit-mode-only elements from clone
-    ['editModeBtn','editSaveBar'].forEach(id => {
-      const el = clone.querySelector('#' + id);
+    var clone = document.documentElement.cloneNode(true);
+    ['editModeBtn','editSaveBar'].forEach(function(id) {
+      var el = clone.querySelector('#' + id);
       if (el) el.remove();
     });
-
-    // Remove eb- classes from clone
-    clone.querySelectorAll('[class]').forEach(el => {
+    clone.querySelectorAll('[class]').forEach(function(el) {
       el.className = el.className.replace(/\beb-\w+/g, '').trim();
       if (!el.className) el.removeAttribute('class');
     });
-
-    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    const blob = new Blob([html], {type:'text/html'});
-    const a = document.createElement('a');
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var blob = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'my-wedding-website.html';
     a.click();
-
-    // Restore edit button
-    const btn = document.getElementById('editModeBtn');
-    if (btn) { btn.innerHTML = '✏️ Edit Website'; btn.style.background = '#fff'; btn.style.borderColor = '#ccc'; }
+    var btn = document.getElementById('editModeBtn');
+    if (btn) { btn.innerHTML = '\u270F\uFE0F Edit Website'; btn.style.background = '#fff'; btn.style.borderColor = '#ccc'; }
     document.getElementById('editSaveBar').style.display = 'none';
   };
+
+  window.toggleEditMode = toggleEditMode;
 })();
-</script>
+</'+'script>
 </body></html>`;
     }
 
